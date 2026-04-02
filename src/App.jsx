@@ -22,7 +22,6 @@ const PAY = {
 
 /* --- Embedded Images (base64) --- */
 const IMG = {
-  carousel_0: "/images/carousel_0.jpg",
   carousel_1: "/images/carousel_1.jpg",
   carousel_2: "/images/carousel_2.jpg",
   body_children: "/images/body_children.jpg",
@@ -43,6 +42,44 @@ function useMedia(q) {
     return () => mq.removeEventListener("change", h);
   }, [q]);
   return m;
+}
+
+/* --- Reusable Hero Carousel --- */
+function HeroCarousel({ slides, gradientColor = C.dk, accentColor = C.sec, children }) {
+  const [cur, setCur] = useState(0);
+  const mob = useMedia("(max-width: 768px)");
+
+  useEffect(() => {
+    const t = setInterval(() => setCur((c) => (c + 1) % slides.length), 6000);
+    return () => clearInterval(t);
+  }, [slides.length]);
+
+  return (
+    <section style={{ position: "relative", minHeight: mob ? "60vh" : "70vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
+      {slides.map((s, i) => (
+        <div key={i} style={{ position: "absolute", inset: 0, opacity: i === cur ? 1 : 0, transition: "opacity 1s ease-in-out" }}>
+          <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${s.img})`, backgroundSize: "cover", backgroundPosition: "center" }} />
+          <div style={{ position: "absolute", inset: 0, background: `linear-gradient(135deg, ${gradientColor}E6 0%, ${gradientColor}99 50%, ${gradientColor}40 100%)` }} />
+          <Sparkle size={48} color={`${accentColor}40`} style={{ position: "absolute", top: "12%", right: "15%", zIndex: 1 }} />
+          <Sparkle size={28} color={`${accentColor}30`} style={{ position: "absolute", bottom: "20%", right: "30%", zIndex: 1 }} />
+          <Sparkle size={20} color={`${C.pri}30`} style={{ position: "absolute", top: "55%", right: "8%", zIndex: 1 }} />
+        </div>
+      ))}
+      <div style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", padding: mob ? "120px 20px 60px" : "100px 24px 80px", width: "100%", textAlign: "center" }}>
+        {slides.map((s, i) => (
+          <div key={i} style={{ display: i === cur ? "block" : "none" }}>
+            {s.icon && <span style={{ fontSize: 48, display: "block", marginBottom: 20 }}>{s.icon}</span>}
+            <h1 style={{ fontSize: mob ? 32 : 52, fontWeight: 800, color: C.w, lineHeight: 1.15, marginBottom: 20, letterSpacing: "-1px" }}>{s.h}</h1>
+            <p style={{ fontSize: mob ? 16 : 19, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, marginBottom: 36, maxWidth: 650, margin: "0 auto 36px" }}>{s.s}</p>
+          </div>
+        ))}
+        {children}
+        <div style={{ display: "flex", gap: 10, justifyContent: "center", marginTop: 48 }}>
+          {slides.map((_, i) => <button key={i} onClick={() => setCur(i)} style={{ width: i === cur ? 32 : 10, height: 10, borderRadius: 5, border: "none", background: i === cur ? accentColor : "rgba(255,255,255,0.4)", cursor: "pointer", transition: "all 0.3s" }} />)}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 /* --- Shared Components --- */
@@ -214,9 +251,8 @@ function HomePage({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
 
   const slides = [
-    { img: IMG.carousel_0, h: "Unlocking Possibilities for Neurodiversity", s: "A learning ecosystem designed for every kind of learner in classrooms, communities, & beyond." },
-    { img: IMG.carousel_1, h: "Where Every Learner Belongs", s: "We dream of a future where the non-verbal can have a seat at the table. In regular jobs & spaces because learning sign language is accessible & normalised." },
-    { img: IMG.carousel_2, h: "Real Access. Real Impact.", s: "Combining technology, inclusive education practices & research to create high quality learning experiences." },
+    { img: IMG.carousel_1, h: "Unlocking Possibilities for Neurodiversity", s: "A learning ecosystem designed for every kind of learner in classrooms, communities, & beyond." },
+    { img: IMG.carousel_2, h: "Where Every Learner Belongs", s: "We dream of a future where the non-verbal can have a seat at the table. In regular jobs & spaces because learning sign language is accessible & normalised." },
   ];
 
   useEffect(() => {
@@ -403,15 +439,19 @@ function ClustersPage({ setPage }) {
   const mob = useMedia("(max-width: 768px)");
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
 
+  const clusterSlides = [
+    { img: IMG.carousel_1, icon: "📚", h: "Learning Clusters", s: "Simple, safe, & structured learning spaces that make education accessible without needing a traditional classroom." },
+    { img: IMG.carousel_2, icon: "📚", h: "Education Without Barriers", s: "Bringing quality learning directly to communities, homes, & families who need it most." },
+  ];
+
   return (
     <div style={{ paddingTop: 72 }}>
-      <section style={{ padding: mob ? "80px 20px 60px" : "100px 24px 80px", background: `linear-gradient(135deg, ${C.dk} 0%, ${C.pri} 100%)`, textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <Sparkle size={32} color={`${C.sec}50`} style={{ position: "absolute", top: "20%", right: "12%", opacity: 0.5 }} />
-        <Sparkle size={20} color={`${C.sec}30`} style={{ position: "absolute", bottom: "25%", left: "8%", opacity: 0.4 }} />
-        <span style={{ fontSize: 48, display: "block", marginBottom: 20 }}>📚</span>
-        <h1 style={{ fontSize: mob ? 32 : 44, fontWeight: 800, color: C.w, marginBottom: 16 }}>Learning Clusters</h1>
-        <p style={{ fontSize: 18, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, maxWidth: 600, margin: "0 auto" }}>Simple, safe, & structured learning spaces that make education accessible without needing a traditional classroom.</p>
-      </section>
+      <HeroCarousel slides={clusterSlides} gradientColor={C.dk} accentColor={C.pri}>
+        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+          <Btn href={PAY.once}>Sponsor a Cluster</Btn>
+          <Btn v="outW" onClick={() => go("contact")}>Partner with Us</Btn>
+        </div>
+      </HeroCarousel>
 
       {/* Problem / Solution */}
       <section style={{ padding: mob ? "60px 20px" : "80px 24px", background: C.w }}>
@@ -512,15 +552,20 @@ function ClustersPage({ setPage }) {
 function NeoSpeakPage({ setPage }) {
   const mob = useMedia("(max-width: 768px)");
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
+
+  const speakSlides = [
+    { img: IMG.carousel_1, icon: "🤟", h: "NeoSpeak", s: "A gamified sign language learning tool built to bridge communication gaps between verbal & non-verbal learners using AI & machine learning." },
+    { img: IMG.carousel_2, icon: "🤟", h: "Communication Without Limits", s: "Making sign language accessible, fun, & normalized so everyone can connect meaningfully." },
+  ];
+
   return (
     <div style={{ paddingTop: 72 }}>
-      <section style={{ padding: mob ? "80px 20px 60px" : "100px 24px 80px", background: `linear-gradient(135deg, ${C.dk} 0%, ${C.acc} 100%)`, textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <Sparkle size={28} color={`${C.sec}40`} style={{ position: "absolute", top: "18%", right: "10%", opacity: 0.5 }} />
-        <Sparkle size={18} color={`${C.sec}30`} style={{ position: "absolute", bottom: "20%", left: "7%", opacity: 0.4 }} />
-        <span style={{ fontSize: 48, display: "block", marginBottom: 20 }}>🤟</span>
-        <h1 style={{ fontSize: mob ? 32 : 44, fontWeight: 800, color: C.w, marginBottom: 16 }}>NeoSpeak</h1>
-        <p style={{ fontSize: 18, color: "rgba(255,255,255,0.9)", lineHeight: 1.7, maxWidth: 600, margin: "0 auto" }}>A gamified sign language learning tool built to bridge communication gaps between verbal & non-verbal learners using AI & machine learning.</p>
-      </section>
+      <HeroCarousel slides={speakSlides} gradientColor={C.dk} accentColor={C.acc}>
+        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+          <Btn onClick={() => go("contact")}>Join the Waitlist</Btn>
+          <Btn v="outW" href={PAY.rec}>Support Development</Btn>
+        </div>
+      </HeroCarousel>
 
       <section style={{ padding: mob ? "60px 20px" : "80px 24px", background: C.w }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr", gap: mob ? 32 : 64, alignItems: "center" }}>
@@ -578,15 +623,17 @@ function NeoSpeakPage({ setPage }) {
 function NeoCornerPage({ setPage }) {
   const mob = useMedia("(max-width: 768px)");
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
+
+  const cornerSlides = [
+    { img: IMG.carousel_1, icon: "🔬", h: "Neo Curiosity Corner", s: "A collaborative research community focused on improving learning experiences through shared knowledge & real-world insights." },
+    { img: IMG.carousel_2, icon: "🔬", h: "Where Ideas Shape Learning", s: "Educators, parents, researchers, & designers come together to explore better ways to teach & learn." },
+  ];
+
   return (
     <div style={{ paddingTop: 72 }}>
-      <section style={{ padding: mob ? "80px 20px 60px" : "100px 24px 80px", background: `linear-gradient(135deg, ${C.dk} 0%, ${C.sec}DD 100%)`, textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <Sparkle size={28} color={`${C.w}25`} style={{ position: "absolute", top: "15%", left: "12%", opacity: 0.5 }} />
-        <Sparkle size={18} color={`${C.w}20`} style={{ position: "absolute", bottom: "22%", right: "10%", opacity: 0.4 }} />
-        <span style={{ fontSize: 48, display: "block", marginBottom: 20 }}>🔬</span>
-        <h1 style={{ fontSize: mob ? 32 : 44, fontWeight: 800, color: C.w, marginBottom: 16 }}>Neo Curiosity Corner</h1>
-        <p style={{ fontSize: 18, color: "rgba(255,255,255,0.9)", lineHeight: 1.7, maxWidth: 600, margin: "0 auto" }}>A collaborative research community focused on improving learning experiences through shared knowledge & real-world insights.</p>
-      </section>
+      <HeroCarousel slides={cornerSlides} gradientColor={C.dk} accentColor={C.sec}>
+        <Btn onClick={() => go("contact")}>Join Our Community</Btn>
+      </HeroCarousel>
 
       <section style={{ padding: mob ? "60px 20px" : "80px 24px", background: C.w }}>
         <SecTitle tag="Community" title="Who joins the conversation?" />
