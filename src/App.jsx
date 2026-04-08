@@ -176,7 +176,8 @@ function NavBar({ page, setPage }) {
     { id: "contact", label: "Contact" },
   ];
 
-  const solid = scrolled || open;
+  const hasHero = page === "home";
+  const solid = scrolled || open || !hasHero;
   const linkColor = solid ? C.tx : C.w;
   const activeColor = solid ? C.pri : C.sec;
   const activeBg = solid ? C.priL : "rgba(255,255,255,0.15)";
