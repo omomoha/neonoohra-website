@@ -59,10 +59,10 @@ function HeroCarousel({ slides, gradientColor = C.dk, accentColor = C.sec, child
   }, [slides.length]);
 
   return (
-    <section style={{ position: "relative", minHeight: mob ? "60vh" : "70vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
+    <section style={{ position: "relative", minHeight: mob ? "55vh" : "65vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
       {slides.map((s, i) => (
         <div key={i} style={{ position: "absolute", inset: 0, opacity: i === cur ? 1 : 0, transition: "opacity 1s ease-in-out" }}>
-          <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${s.img})`, backgroundSize: "cover", backgroundPosition: "center" }} />
+          <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${s.img})`, backgroundSize: "cover", backgroundPosition: "center top" }} />
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(135deg, ${gradientColor}E6 0%, ${gradientColor}99 50%, ${gradientColor}40 100%)` }} />
           <Sparkle size={48} color={`${accentColor}40`} style={{ position: "absolute", top: "12%", right: "15%", zIndex: 1 }} />
           <Sparkle size={28} color={`${accentColor}30`} style={{ position: "absolute", bottom: "20%", right: "30%", zIndex: 1 }} />
@@ -176,21 +176,27 @@ function NavBar({ page, setPage }) {
     { id: "contact", label: "Contact" },
   ];
 
+  const solid = scrolled || open;
+  const linkColor = solid ? C.tx : C.w;
+  const activeColor = solid ? C.pri : C.sec;
+  const activeBg = solid ? C.priL : "rgba(255,255,255,0.15)";
+  const hamburgerColor = solid ? C.dk : C.w;
+
   return (
-    <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 10000, background: scrolled || open ? C.bg : "transparent", backdropFilter: scrolled ? "blur(10px)" : "none", boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.06)" : "none", transition: "all 0.3s ease" }}>
+    <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 10000, background: solid ? C.bg : "transparent", backdropFilter: scrolled ? "blur(10px)" : "none", boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.06)" : "none", transition: "all 0.3s ease" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 72, padding: "0 24px" }}>
         <div onClick={() => go("home")} style={{ cursor: "pointer", zIndex: 1001 }}>
-          <img src={IMG.logo} alt="NeoNoohra" style={{ height: 32 }} />
+          <img src={solid ? IMG.logo : IMG.logo_white} alt="NeoNoohra" style={{ height: 32 }} />
         </div>
         {mob ? (
           <button onClick={() => setOpen(!open)} style={{ background: "none", border: "none", cursor: "pointer", zIndex: 1001, padding: 8 }}>
-            <div style={{ width: 24, height: 2, background: C.dk, marginBottom: 6, transition: "all 0.3s", transform: open ? "rotate(45deg) translate(5px, 5px)" : "none" }} />
-            <div style={{ width: 24, height: 2, background: C.dk, marginBottom: 6, opacity: open ? 0 : 1, transition: "all 0.3s" }} />
-            <div style={{ width: 24, height: 2, background: C.dk, transition: "all 0.3s", transform: open ? "rotate(-45deg) translate(5px, -5px)" : "none" }} />
+            <div style={{ width: 24, height: 2, background: hamburgerColor, marginBottom: 6, transition: "all 0.3s", transform: open ? "rotate(45deg) translate(5px, 5px)" : "none" }} />
+            <div style={{ width: 24, height: 2, background: hamburgerColor, marginBottom: 6, opacity: open ? 0 : 1, transition: "all 0.3s" }} />
+            <div style={{ width: 24, height: 2, background: hamburgerColor, transition: "all 0.3s", transform: open ? "rotate(-45deg) translate(5px, -5px)" : "none" }} />
           </button>
         ) : (
           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-            {links.map((l) => <button key={l.id} onClick={() => go(l.id)} style={{ background: page === l.id ? C.priL : "transparent", color: page === l.id ? C.pri : C.tx, border: "none", padding: "8px 16px", borderRadius: 8, fontSize: 14, fontWeight: page === l.id ? 600 : 500, cursor: "pointer", fontFamily: "inherit" }}>{l.label}</button>)}
+            {links.map((l) => <button key={l.id} onClick={() => go(l.id)} style={{ background: page === l.id ? activeBg : "transparent", color: page === l.id ? activeColor : linkColor, border: "none", padding: "8px 16px", borderRadius: 8, fontSize: 14, fontWeight: page === l.id ? 600 : 500, cursor: "pointer", fontFamily: "inherit", transition: "all 0.3s" }}>{l.label}</button>)}
             <Btn onClick={() => go("get-involved")} style={{ padding: "10px 20px", fontSize: 14, marginLeft: 8 }}>Get Involved</Btn>
           </div>
         )}
@@ -264,10 +270,10 @@ function HomePage({ setPage }) {
   return (
     <div>
       {/* HERO */}
-      <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
+      <section style={{ position: "relative", minHeight: mob ? "75vh" : "80vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
         {slides.map((s, i) => (
           <div key={i} style={{ position: "absolute", inset: 0, opacity: i === cur ? 1 : 0, transition: "opacity 1s ease-in-out" }}>
-            <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${s.img})`, backgroundSize: "cover", backgroundPosition: "center" }} />
+            <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${s.img})`, backgroundSize: "cover", backgroundPosition: "center top" }} />
             {/* Dark overlay for text readability */}
             <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to right, ${C.dk}E6 0%, ${C.dk}99 50%, ${C.dk}40 100%)` }} />
             {/* Sparkle decorations */}
