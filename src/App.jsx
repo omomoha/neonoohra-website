@@ -16,7 +16,7 @@ const C = {
 };
 
 const PAY = {
-  once: "https://paystack.shop/pay/thenoohrasupportgroup-onetime",
+  once: "https://paystack.shop/pay/theneonoohrasupportgroup-onetime",
   rec: "https://paystack.shop/pay/a9wx9n8yht",
 };
 
@@ -24,11 +24,15 @@ const PAY = {
 const IMG = {
   carousel_1: "/images/carousel_1.jpg",
   carousel_2: "/images/carousel_2.jpg",
+  carousel_3: "/images/carousel_3.jpg",
+  carousel_4: "/images/carousel_4.jpg",
   body_children: "/images/body_children.jpg",
   body_cluster1: "/images/body_cluster1.jpg",
   body_cluster2: "/images/body_cluster2.jpg",
   body_cluster3: "/images/body_cluster3.jpg",
   body_neospeak: "/images/body_neospeak.jpg",
+  logo: "/images/logo.png",
+  logo_white: "/images/logo_white.png",
 };
 
 
@@ -175,13 +179,8 @@ function NavBar({ page, setPage }) {
   return (
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 10000, background: scrolled || open ? C.bg : "transparent", backdropFilter: scrolled ? "blur(10px)" : "none", boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.06)" : "none", transition: "all 0.3s ease" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 72, padding: "0 24px" }}>
-        <div onClick={() => go("home")} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 2, zIndex: 1001 }}>
-          <span style={{ fontSize: 22, fontWeight: 800, letterSpacing: "-0.5px" }}>
-            <span style={{ color: C.dk }}>Neo</span><span style={{ color: C.acc }}>N</span><span style={{ color: C.blue }}>oo</span><span style={{ color: C.pink }}>hr</span><span style={{ color: C.pri }}>a</span>
-          </span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill={C.sec} style={{ marginLeft: 2, marginTop: -10 }}>
-            <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z"/>
-          </svg>
+        <div onClick={() => go("home")} style={{ cursor: "pointer", zIndex: 1001 }}>
+          <img src={IMG.logo} alt="NeoNoohra" style={{ height: 32 }} />
         </div>
         {mob ? (
           <button onClick={() => setOpen(!open)} style={{ background: "none", border: "none", cursor: "pointer", zIndex: 1001, padding: 8 }}>
@@ -214,9 +213,8 @@ function Footer({ setPage }) {
     <footer style={{ background: C.dk, color: C.w, padding: "64px 24px 32px" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: mob ? "1fr" : "repeat(4, 1fr)", gap: 40 }}>
         <div>
-          <div style={{ fontSize: 22, fontWeight: 800, marginBottom: 12, display: "flex", alignItems: "center", gap: 2 }}>
-            <span><span style={{ color: C.w }}>Neo</span><span style={{ color: C.acc }}>N</span><span style={{ color: C.blue }}>oo</span><span style={{ color: C.pink }}>hr</span><span style={{ color: C.pri }}>a</span></span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill={C.sec} style={{ marginTop: -6, marginLeft: 2 }}><path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5Z"/></svg>
+          <div style={{ marginBottom: 12 }}>
+            <img src={IMG.logo} alt="NeoNoohra" style={{ height: 28 }} />
           </div>
           <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, lineHeight: 1.7 }}>A learning ecosystem designed for every kind of learner in classrooms, communities, & beyond.</p>
         </div>
@@ -226,7 +224,7 @@ function Footer({ setPage }) {
         </div>
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, marginBottom: 16, textTransform: "uppercase", letterSpacing: 1, color: C.sec }}>Get Involved</h4>
-          <a href={PAY.once} target="_blank" rel="noopener noreferrer" style={{ display: "block", color: "rgba(255,255,255,0.65)", fontSize: 14, marginBottom: 10, textDecoration: "none" }}>Donate</a>
+          <a onClick={() => go("donate")} style={{ display: "block", color: "rgba(255,255,255,0.65)", fontSize: 14, cursor: "pointer", marginBottom: 10, textDecoration: "none" }}>Donate</a>
           <a onClick={() => go("contact")} style={{ display: "block", color: "rgba(255,255,255,0.65)", fontSize: 14, cursor: "pointer", marginBottom: 10, textDecoration: "none" }}>Partner with Us</a>
           <a onClick={() => go("contact")} style={{ display: "block", color: "rgba(255,255,255,0.65)", fontSize: 14, cursor: "pointer", marginBottom: 10, textDecoration: "none" }}>Volunteer</a>
         </div>
@@ -253,6 +251,8 @@ function HomePage({ setPage }) {
   const slides = [
     { img: IMG.carousel_1, h: "Unlocking Possibilities for Neurodiversity", s: "A learning ecosystem designed for every kind of learner in classrooms, communities, & beyond." },
     { img: IMG.carousel_2, h: "Where Every Learner Belongs", s: "We dream of a future where the non-verbal can have a seat at the table. In regular jobs & spaces because learning sign language is accessible & normalised." },
+    { img: IMG.carousel_3, h: "Real Access. Real Impact.", s: "Combining technology, inclusive education practices & research to create high quality learning experiences." },
+    { img: IMG.carousel_4, h: "Technology Meets Learning", s: "Equipping learners with digital tools and immersive experiences that make education engaging & accessible." },
   ];
 
   useEffect(() => {
@@ -673,6 +673,96 @@ function NeoCornerPage({ setPage }) {
 /* ===========================
    6. GET INVOLVED PAGE
    =========================== */
+/* ===========================
+   DONATE PAGE
+   =========================== */
+function DonatePage({ setPage }) {
+  const mob = useMedia("(max-width: 768px)");
+  const go = (id) => { setPage(id); window.scrollTo(0, 0); };
+  return (
+    <div style={{ paddingTop: 72 }}>
+      <section style={{ padding: mob ? "80px 20px 60px" : "100px 24px 80px", background: `linear-gradient(135deg, ${C.dk} 0%, ${C.sec}DD 100%)`, textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <Sparkle size={32} color={`${C.w}30`} style={{ position: "absolute", top: "20%", right: "15%", opacity: 0.5 }} />
+        <Sparkle size={20} color={`${C.w}20`} style={{ position: "absolute", bottom: "25%", left: "10%", opacity: 0.4 }} />
+        <span style={{ fontSize: 48, display: "block", marginBottom: 20 }}>💛</span>
+        <h1 style={{ fontSize: mob ? 32 : 44, fontWeight: 800, color: C.w, marginBottom: 16 }}>Support NeoNoohra</h1>
+        <p style={{ fontSize: 18, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, maxWidth: 600, margin: "0 auto" }}>Every contribution helps us reach more learners. Choose how you'd like to donate below.</p>
+      </section>
+
+      {/* Online Payment via Paystack */}
+      <section style={{ padding: mob ? "60px 20px" : "80px 24px", background: C.w }}>
+        <SecTitle tag="Online Payment" title="Donate via Paystack" sub="Secure online payment powered by Paystack. Supports Visa, Mastercard, Verve, bank transfer & more." />
+        <div style={{ maxWidth: 700, margin: "0 auto" }}>
+          <RGrid cols={2} gap={24}>
+            <Card border={`4px solid ${C.sec}`} style={{ textAlign: "center" }}>
+              <div style={{ fontSize: 40, marginBottom: 12 }}>💳</div>
+              <h3 style={{ fontSize: 22, fontWeight: 700, color: C.dk, marginBottom: 8 }}>One-Time Donation</h3>
+              <p style={{ fontSize: 14, color: C.txL, lineHeight: 1.7, marginBottom: 24 }}>Make a single donation of any amount to support our mission.</p>
+              <Btn full v="sec" href={PAY.once}>Donate Now</Btn>
+            </Card>
+            <Card border={`4px solid ${C.pri}`} style={{ textAlign: "center" }}>
+              <div style={{ fontSize: 40, marginBottom: 12 }}>🔄</div>
+              <h3 style={{ fontSize: 22, fontWeight: 700, color: C.dk, marginBottom: 8 }}>Recurring Donation</h3>
+              <p style={{ fontSize: 14, color: C.txL, lineHeight: 1.7, marginBottom: 24 }}>Set up a weekly or monthly donation to provide sustained support.</p>
+              <Btn full href={PAY.rec}>Set Up Recurring</Btn>
+            </Card>
+          </RGrid>
+        </div>
+      </section>
+
+      {/* Bank Transfer */}
+      <section style={{ padding: mob ? "60px 20px" : "80px 24px", background: C.bgA }}>
+        <SecTitle tag="Bank Transfer" title="Donate via Bank Transfer" sub="Transfer directly to our bank accounts. Available for NGN, GBP, & USD." />
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <RGrid cols={3} gap={20}>
+            <Card border={`3px solid ${C.pri}`} style={{ textAlign: "center" }}>
+              <div style={{ background: C.priL, width: 56, height: 56, borderRadius: 28, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", fontSize: 24 }}>🇳🇬</div>
+              <p style={{ fontSize: 13, color: C.txL, fontWeight: 600, marginBottom: 4 }}>Naira (NGN) Account</p>
+              <p style={{ fontSize: 22, fontWeight: 800, color: C.dk, marginBottom: 4 }}>0736144516</p>
+              <p style={{ fontSize: 15, fontWeight: 600, color: C.tx }}>GTBank</p>
+              <p style={{ fontSize: 12, color: C.txL, marginTop: 8 }}>Noohra Conditioning Ltd</p>
+            </Card>
+            <Card border={`3px solid ${C.blue}`} style={{ textAlign: "center" }}>
+              <div style={{ background: C.blueL, width: 56, height: 56, borderRadius: 28, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", fontSize: 24 }}>🇬🇧</div>
+              <p style={{ fontSize: 13, color: C.txL, fontWeight: 600, marginBottom: 4 }}>GBP Account</p>
+              <p style={{ fontSize: 22, fontWeight: 800, color: C.dk, marginBottom: 4 }}>0736144516</p>
+              <p style={{ fontSize: 15, fontWeight: 600, color: C.tx }}>GTBank</p>
+              <p style={{ fontSize: 12, color: C.txL, marginTop: 8 }}>SWIFT: GTBINGLAXXX</p>
+            </Card>
+            <Card border={`3px solid ${C.acc}`} style={{ textAlign: "center" }}>
+              <div style={{ background: C.accL, width: 56, height: 56, borderRadius: 28, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", fontSize: 24 }}>🇺🇸</div>
+              <p style={{ fontSize: 13, color: C.txL, fontWeight: 600, marginBottom: 4 }}>USD Account</p>
+              <p style={{ fontSize: 22, fontWeight: 800, color: C.dk, marginBottom: 4 }}>0737144509</p>
+              <p style={{ fontSize: 15, fontWeight: 600, color: C.tx }}>GTBank</p>
+              <p style={{ fontSize: 12, color: C.txL, marginTop: 8 }}>SWIFT: GTBINGLAXXX</p>
+            </Card>
+          </RGrid>
+        </div>
+      </section>
+
+      {/* Impact section */}
+      <section style={{ padding: mob ? "60px 20px" : "80px 24px", background: `linear-gradient(135deg, ${C.dk} 0%, ${C.pri}DD 100%)`, textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <Sparkle size={28} color={`${C.sec}30`} style={{ position: "absolute", top: "15%", left: "10%", opacity: 0.5 }} />
+        <div style={{ maxWidth: 700, margin: "0 auto", position: "relative", zIndex: 1 }}>
+          <h2 style={{ fontSize: mob ? 26 : 32, fontWeight: 800, color: C.w, marginBottom: 20 }}>Your donation makes a difference</h2>
+          <RGrid cols={3} gap={20}>
+            {[["📚", "Learning Materials", "Provide curriculum & tools for learners"], ["👩‍🏫", "Facilitators", "Train & support community educators"], ["🔬", "Research", "Fund inclusive education research"]].map(([icon, title, desc], i) => (
+              <div key={i} style={{ textAlign: "center" }}>
+                <div style={{ fontSize: 36, marginBottom: 8 }}>{icon}</div>
+                <h4 style={{ fontSize: 16, fontWeight: 700, color: C.w, marginBottom: 4 }}>{title}</h4>
+                <p style={{ fontSize: 13, color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>{desc}</p>
+              </div>
+            ))}
+          </RGrid>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ===========================
+   6. GET INVOLVED PAGE
+   =========================== */
 function GetInvolvedPage({ setPage }) {
   const mob = useMedia("(max-width: 768px)");
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
@@ -689,7 +779,7 @@ function GetInvolvedPage({ setPage }) {
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <RGrid cols={3}>
             {[
-              { icon: "💛", t: "Donate", d: "Support our mission financially. Every contribution helps us reach more learners.", cta: "Donate Now", href: PAY.once, c: C.sec },
+              { icon: "💛", t: "Donate", d: "Support our mission financially. Every contribution helps us reach more learners.", cta: "Donate Now", pg: "donate", c: C.sec },
               { icon: "🤝", t: "Partner", d: "Collaborate with us to expand access to inclusive learning in your community.", cta: "Become a Partner", pg: "contact", c: C.pri },
               { icon: "✋", t: "Volunteer", d: "Contribute your skills & time to help build a more inclusive learning future.", cta: "Join as Volunteer", pg: "contact", c: C.acc },
             ].map((w, i) => (
@@ -943,6 +1033,7 @@ export default function App() {
       case "clusters": return <ClustersPage setPage={nav} />;
       case "neospeak": return <NeoSpeakPage setPage={nav} />;
       case "neocorner": return <NeoCornerPage setPage={nav} />;
+      case "donate": return <DonatePage setPage={nav} />;
       case "get-involved": return <GetInvolvedPage setPage={nav} />;
       case "about": return <AboutPage />;
       case "contact": return <ContactPage prefill={contactPrefill} />;
