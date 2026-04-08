@@ -198,6 +198,7 @@ function NavBar({ page, setPage }) {
       {mob && open && (
         <div style={{ position: "fixed", top: 72, left: 0, right: 0, bottom: 0, background: C.bg, padding: 24, display: "flex", flexDirection: "column", gap: 8, zIndex: 9999, overflowY: "auto" }}>
           {links.map((l) => <button key={l.id} onClick={() => go(l.id)} style={{ background: page === l.id ? C.priL : "transparent", color: page === l.id ? C.pri : C.tx, border: "none", padding: "16px 20px", borderRadius: 12, fontSize: 17, fontWeight: page === l.id ? 700 : 500, cursor: "pointer", textAlign: "left", fontFamily: "inherit", flexShrink: 0 }}>{l.label}</button>)}
+          <button onClick={() => go("donate")} style={{ background: "transparent", color: C.sec, border: "none", padding: "16px 20px", borderRadius: 12, fontSize: 17, fontWeight: 500, cursor: "pointer", textAlign: "left", fontFamily: "inherit", flexShrink: 0 }}>Donate</button>
           <div style={{ marginTop: 16, flexShrink: 0 }}><Btn full onClick={() => go("get-involved")}>Get Involved</Btn></div>
         </div>
       )}
@@ -287,7 +288,7 @@ function HomePage({ setPage }) {
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <Btn onClick={() => go("contact")}>Join the NeoSpeak Waitlist</Btn>
               <Btn v="outW" onClick={() => go("ecosystem")}>Explore the Ecosystem</Btn>
-              <Btn v="sec" href={PAY.once}>Support a Child</Btn>
+              <Btn v="sec" onClick={() => go("donate")}>Support a Child</Btn>
             </div>
           </div>
           <div style={{ display: "flex", gap: 10, marginTop: 48 }}>
@@ -379,9 +380,9 @@ function HomePage({ setPage }) {
           <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 17, marginBottom: 36, lineHeight: 1.7 }}>Whether you want to join our community, sponsor a child, or partner with us - every action counts.</p>
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
             <Btn onClick={() => go("contact")}>Join the NeoSpeak Waitlist</Btn>
-            <Btn v="sec" href={PAY.once}>Sponsor a Child</Btn>
+            <Btn v="sec" onClick={() => go("donate")}>Sponsor a Child</Btn>
             <Btn v="outW" onClick={() => go("contact")}>Partner With Us</Btn>
-            <Btn v="outW" href={PAY.rec}>Support Development</Btn>
+            <Btn v="outW" onClick={() => go("donate")}>Support Development</Btn>
             <Btn v="wht" onClick={() => go("contact")}>Join The Neo Corner Community</Btn>
           </div>
         </div>
@@ -448,7 +449,7 @@ function ClustersPage({ setPage }) {
     <div style={{ paddingTop: 72 }}>
       <HeroCarousel slides={clusterSlides} gradientColor={C.dk} accentColor={C.pri}>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <Btn href={PAY.once}>Sponsor a Cluster</Btn>
+          <Btn onClick={() => go("donate")}>Sponsor a Cluster</Btn>
           <Btn v="outW" onClick={() => go("contact")}>Partner with Us</Btn>
         </div>
       </HeroCarousel>
@@ -483,8 +484,8 @@ function ClustersPage({ setPage }) {
                 <p style={{ fontSize: 15, color: C.tx, lineHeight: 1.7, marginBottom: 12 }}>These are structured environments where children receive guided learning using a mobile curriculum & digital tools.</p>
                 <p style={{ fontSize: 15, color: C.txL, lineHeight: 1.7, marginBottom: 24 }}>These clusters bring education directly to children who would otherwise have no access.</p>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <Btn href={PAY.once} style={{ padding: "10px 16px", fontSize: 13 }}>Sponsor a Cluster</Btn>
-                  <Btn v="sec" href={PAY.once} style={{ padding: "10px 16px", fontSize: 13 }}>Sponsor a Child</Btn>
+                  <Btn onClick={() => go("donate")} style={{ padding: "10px 16px", fontSize: 13 }}>Sponsor a Cluster</Btn>
+                  <Btn v="sec" onClick={() => go("donate")} style={{ padding: "10px 16px", fontSize: 13 }}>Sponsor a Child</Btn>
                   <Btn v="out" onClick={() => go("contact")} style={{ padding: "10px 16px", fontSize: 13 }}>Partner with Us</Btn>
                 </div>
               </div>
@@ -686,7 +687,7 @@ function DonatePage({ setPage }) {
         <Sparkle size={20} color={`${C.w}20`} style={{ position: "absolute", bottom: "25%", left: "10%", opacity: 0.4 }} />
         <span style={{ fontSize: 48, display: "block", marginBottom: 20 }}>💛</span>
         <h1 style={{ fontSize: mob ? 32 : 44, fontWeight: 800, color: C.w, marginBottom: 16 }}>Support NeoNoohra</h1>
-        <p style={{ fontSize: 18, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, maxWidth: 600, margin: "0 auto" }}>Every contribution helps us reach more learners. Choose how you'd like to donate below.</p>
+        <p style={{ fontSize: mob ? 16 : 18, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, maxWidth: 600, margin: "0 auto" }}>Every contribution helps us reach more learners. Choose how you'd like to donate below.</p>
       </section>
 
       {/* Online Payment via Paystack */}
@@ -794,13 +795,13 @@ function GetInvolvedPage({ setPage }) {
         </div>
       </section>
 
-      <section style={{ padding: "60px 24px", background: C.w, textAlign: "center" }}>
-        <h3 style={{ fontSize: 24, fontWeight: 700, color: C.dk, marginBottom: 12 }}>Want to give regularly?</h3>
-        <p style={{ fontSize: 16, color: C.txL, lineHeight: 1.7, marginBottom: 24, maxWidth: 500, margin: "0 auto 24px" }}>Set up a recurring donation to provide sustained support for learners who need it most.</p>
+      <section style={{ padding: mob ? "40px 20px" : "60px 24px", background: C.w, textAlign: "center" }}>
+        <h3 style={{ fontSize: mob ? 20 : 24, fontWeight: 700, color: C.dk, marginBottom: 12 }}>Want to give regularly?</h3>
+        <p style={{ fontSize: mob ? 15 : 16, color: C.txL, lineHeight: 1.7, marginBottom: 24, maxWidth: 500, margin: "0 auto 24px" }}>Set up a recurring donation to provide sustained support for learners who need it most.</p>
         <Btn v="sec" href={PAY.rec}>Set Up Recurring Donation</Btn>
       </section>
 
-      <section style={{ padding: "60px 24px", background: C.bgA }}>
+      <section style={{ padding: mob ? "40px 20px" : "60px 24px", background: C.bgA }}>
         <div style={{ maxWidth: 500, margin: "0 auto", textAlign: "center" }}>
           <h3 style={{ fontSize: 20, fontWeight: 700, color: C.dk, marginBottom: 20 }}>International Bank Transfer</h3>
           <Card>
