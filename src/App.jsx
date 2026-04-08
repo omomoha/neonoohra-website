@@ -219,7 +219,7 @@ function Footer({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
   return (
     <footer style={{ background: C.dk, color: C.w, padding: "64px 24px 32px" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: mob ? "1fr" : "repeat(4, 1fr)", gap: 40 }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: mob ? "1fr" : "repeat(3, 1fr)", gap: 40 }}>
         <div>
           <div style={{ marginBottom: 12 }}>
             <img src={IMG.logo} alt="NeoNoohra" style={{ height: 28 }} />
@@ -235,12 +235,6 @@ function Footer({ setPage }) {
           <a onClick={() => go("donate")} style={{ display: "block", color: "rgba(255,255,255,0.65)", fontSize: 14, cursor: "pointer", marginBottom: 10, textDecoration: "none" }}>Donate</a>
           <a onClick={() => go("contact")} style={{ display: "block", color: "rgba(255,255,255,0.65)", fontSize: 14, cursor: "pointer", marginBottom: 10, textDecoration: "none" }}>Partner with Us</a>
           <a onClick={() => go("contact")} style={{ display: "block", color: "rgba(255,255,255,0.65)", fontSize: 14, cursor: "pointer", marginBottom: 10, textDecoration: "none" }}>Volunteer</a>
-        </div>
-        <div>
-          <h4 style={{ fontSize: 14, fontWeight: 700, marginBottom: 16, textTransform: "uppercase", letterSpacing: 1, color: C.sec }}>Bank Transfer</h4>
-          <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 13 }}><strong style={{ color: "rgba(255,255,255,0.8)" }}>GBP:</strong> 0736144516 GTBank</p>
-          <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 13 }}><strong style={{ color: "rgba(255,255,255,0.8)" }}>USD:</strong> 0737144509 GTBank</p>
-          <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 12, marginTop: 4 }}>SWIFT: GTBINGLAXXX</p>
         </div>
       </div>
       <div style={{ maxWidth: 1200, margin: "48px auto 0", paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.1)", textAlign: "center", color: "rgba(255,255,255,0.4)", fontSize: 13 }}>&copy; {new Date().getFullYear()} NeoNoohra. All rights reserved.</div>
@@ -968,25 +962,6 @@ function ContactPage({ prefill }) {
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                 {["Twitter", "Instagram", "LinkedIn"].map((s) => <span key={s} style={{ background: C.priL, color: C.pri, padding: "8px 16px", borderRadius: 20, fontSize: 13, fontWeight: 500, cursor: "pointer" }}>{s}</span>)}
               </div>
-            </Card>
-            <Card style={{ padding: 24 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
-                <div style={{ width: 40, height: 40, borderRadius: 12, background: C.secL, display: "flex", alignItems: "center", justifyContent: "center" }}><span style={{ fontSize: 18 }}>💰</span></div>
-                <h4 style={{ fontSize: 16, fontWeight: 700, color: C.dk }}>Support Financially</h4>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                <a href={PAY.once} target="_blank" rel="noopener noreferrer" style={{ color: C.pri, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>One-time donation →</a>
-                <a href={PAY.rec} target="_blank" rel="noopener noreferrer" style={{ color: C.pri, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>Recurring donation →</a>
-              </div>
-            </Card>
-            <Card style={{ padding: 24, background: C.priL }}>
-              <p style={{ fontSize: 14, color: C.pri, fontWeight: 600, marginBottom: 8 }}>Quick links:</p>
-              <p style={{ fontSize: 13, color: C.tx, lineHeight: 2 }}>
-                • NeoSpeak Waitlist → select "Join NeoSpeak Waitlist"<br/>
-                • Neo Corner Community → select "Join the Neo Corner Community"<br/>
-                • Partnership → select "Partner"<br/>
-                • Volunteering → select "Volunteer"
-              </p>
             </Card>
           </div>
         </div>
