@@ -1003,11 +1003,36 @@ function ArticlesPage() {
 /* ===========================
    MAIN APP
    =========================== */
+const PATH_MAP = {
+  "/": "home", "/ecosystem": "ecosystem", "/clusters": "clusters",
+  "/neospeak": "neospeak", "/neocorner": "neocorner", "/donations": "donate",
+  "/donate": "donate", "/get-involved": "get-involved", "/about": "about",
+  "/contact": "contact", "/articles": "articles",
+};
+const PAGE_PATH = Object.fromEntries(Object.entries(PATH_MAP).map(([k, v]) => [v, k]));
+
+function getPageFromPath() {
+  const p = window.location.pathname.replace(/\/+$/, "") || "/";
+  return PATH_MAP[p] || "home";
+}
+
 export default function App() {
-  const [page, setPage] = useState("home");
+  const [page, setPage] = useState(getPageFromPath);
   const [contactPrefill, setContactPrefill] = useState("");
 
-  const nav = (id) => { setContactPrefill(""); setPage(id); window.scrollTo(0, 0); };
+  useEffect(() => {
+    const onPop = () => { setPage(getPageFromPath()); window.scrollTo(0, 0); };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+
+  const nav = (id) => {
+    setContactPrefill("");
+    setPage(id);
+    const path = PAGE_PATH[id] || "/";
+    window.history.pushState(null, "", path);
+    window.scrollTo(0, 0);
+  };
 
   const renderPage = () => {
     switch (page) {
