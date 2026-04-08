@@ -198,7 +198,8 @@ function NavBar({ page, setPage }) {
         ) : (
           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             {links.map((l) => <button key={l.id} onClick={() => go(l.id)} style={{ background: page === l.id ? activeBg : "transparent", color: page === l.id ? activeColor : linkColor, border: "none", padding: "8px 16px", borderRadius: 8, fontSize: 14, fontWeight: page === l.id ? 600 : 500, cursor: "pointer", fontFamily: "inherit", transition: "all 0.3s" }}>{l.label}</button>)}
-            <Btn onClick={() => go("get-involved")} style={{ padding: "10px 20px", fontSize: 14, marginLeft: 8 }}>Get Involved</Btn>
+            <Btn v="sec" onClick={() => go("donate")} style={{ padding: "10px 20px", fontSize: 14, marginLeft: 8 }}>Donate</Btn>
+            <Btn onClick={() => go("get-involved")} style={{ padding: "10px 20px", fontSize: 14 }}>Get Involved</Btn>
           </div>
         )}
       </div>
