@@ -691,7 +691,7 @@ function DonatePage({ setPage }) {
       </section>
 
       {/* Online Payment via Paystack */}
-      <section style={{ padding: mob ? "60px 20px" : "80px 24px", background: C.w }}>
+      <section style={{ padding: mob ? "40px 20px" : "60px 24px", background: C.w }}>
         <SecTitle tag="Online Payment" title="Donate via Paystack" sub="Secure online payment powered by Paystack. Supports Visa, Mastercard, Verve, bank transfer & more." />
         <div style={{ maxWidth: 700, margin: "0 auto" }}>
           <RGrid cols={2} gap={24}>
@@ -712,7 +712,7 @@ function DonatePage({ setPage }) {
       </section>
 
       {/* Bank Transfer */}
-      <section style={{ padding: mob ? "60px 20px" : "80px 24px", background: C.bgA }}>
+      <section style={{ padding: mob ? "40px 20px" : "60px 24px", background: C.bgA }}>
         <SecTitle tag="Bank Transfer" title="Donate via Bank Transfer" sub="Transfer directly to our bank accounts. Available for NGN, GBP, & USD." />
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <RGrid cols={3} gap={20}>
@@ -742,7 +742,7 @@ function DonatePage({ setPage }) {
       </section>
 
       {/* Impact section */}
-      <section style={{ padding: mob ? "60px 20px" : "80px 24px", background: `linear-gradient(135deg, ${C.dk} 0%, ${C.pri}DD 100%)`, textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <section style={{ padding: mob ? "40px 20px" : "60px 24px", background: `linear-gradient(135deg, ${C.dk} 0%, ${C.pri}DD 100%)`, textAlign: "center", position: "relative", overflow: "hidden" }}>
         <Sparkle size={28} color={`${C.sec}30`} style={{ position: "absolute", top: "15%", left: "10%", opacity: 0.5 }} />
         <div style={{ maxWidth: 700, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <h2 style={{ fontSize: mob ? 26 : 32, fontWeight: 800, color: C.w, marginBottom: 20 }}>Your donation makes a difference</h2>
