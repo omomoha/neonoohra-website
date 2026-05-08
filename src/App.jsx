@@ -247,7 +247,7 @@ function Footer({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
   return (
     <footer style={{ background: C.dk, color: C.w, padding: "64px 24px 32px" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: mob ? "1fr" : "repeat(3, 1fr)", gap: 40 }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: mob ? "1fr" : "repeat(3, 1fr)", gap: mob ? 24 : 40 }}>
         <div>
           <div style={{ marginBottom: 12 }}>
             <img src={IMG.logo} alt="NeoNoohra" style={{ height: 28 }} />
@@ -333,8 +333,8 @@ function HomePage({ setPage }) {
           <p style={{ fontSize: mob ? 18 : 22, color: C.tx, lineHeight: 1.8, fontStyle: "italic" }}>Let's start this journey by sharing one of our dreams with you.</p>
           <div style={{ width: 60, height: 3, background: C.sec, margin: "32px auto", borderRadius: 2 }} />
           <p style={{ fontSize: mob ? 20 : 26, color: C.dk, lineHeight: 1.6, fontWeight: 600, marginBottom: 24 }}>We dream of a future where the non-verbal can have a seat at the table. In regular jobs & spaces because learning sign language is accessible & normalised.</p>
-          <p style={{ fontSize: 18, color: C.txL, fontStyle: "italic" }}>Please sit with that for a moment....</p>
-          <p style={{ fontSize: 16, color: C.txL, marginTop: 32 }}>Alright let's keep going.</p>
+          <p style={{ fontSize: mob ? 16 : 18, color: C.txL, fontStyle: "italic" }}>Please sit with that for a moment....</p>
+          <p style={{ fontSize: mob ? 14 : 16, color: C.txL, marginTop: 32 }}>Alright let's keep going.</p>
         </div>
       </section>
 
@@ -362,8 +362,8 @@ function HomePage({ setPage }) {
             ].map((e, i) => (
               <Card key={i} border={`4px solid ${e.c}`} style={{ cursor: "pointer" }}>
                 <div onClick={() => go(e.p)}>
-                  <div style={{ fontSize: 40, marginBottom: 16 }}>{e.icon}</div>
-                  <h3 style={{ fontSize: 22, fontWeight: 700, color: C.dk, marginBottom: 12 }}>{e.t}</h3>
+                  <div style={{ fontSize: mob ? 34 : 40, marginBottom: 16 }}>{e.icon}</div>
+                  <h3 style={{ fontSize: mob ? 19 : 22, fontWeight: 700, color: C.dk, marginBottom: 12 }}>{e.t}</h3>
                   <p style={{ fontSize: 15, color: C.txL, lineHeight: 1.7, marginBottom: 20 }}>{e.d}</p>
                   <span style={{ color: e.c, fontWeight: 600, fontSize: 14 }}>Explore →</span>
                 </div>
@@ -511,10 +511,10 @@ function ClustersPage({ setPage }) {
                 <p style={{ fontSize: 15, color: C.tx, lineHeight: 1.7, marginBottom: 12 }}>Facilitator-led spaces set up in communities to support out-of-school learners.</p>
                 <p style={{ fontSize: 15, color: C.tx, lineHeight: 1.7, marginBottom: 12 }}>These are structured environments where children receive guided learning using a mobile curriculum & digital tools.</p>
                 <p style={{ fontSize: 15, color: C.txL, lineHeight: 1.7, marginBottom: 24 }}>These clusters bring education directly to children who would otherwise have no access.</p>
-                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                  <Btn onClick={() => go("donate")} style={{ padding: "10px 16px", fontSize: 13 }}>Sponsor a Cluster</Btn>
-                  <Btn v="sec" onClick={() => go("donate")} style={{ padding: "10px 16px", fontSize: 13 }}>Sponsor a Child</Btn>
-                  <Btn v="out" onClick={() => go("contact")} style={{ padding: "10px 16px", fontSize: 13 }}>Partner with Us</Btn>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap", flexDirection: mob ? "column" : "row" }}>
+                  <Btn full={mob} onClick={() => go("donate")} style={{ padding: "10px 16px", fontSize: 13 }}>Sponsor a Cluster</Btn>
+                  <Btn full={mob} v="sec" onClick={() => go("donate")} style={{ padding: "10px 16px", fontSize: 13 }}>Sponsor a Child</Btn>
+                  <Btn full={mob} v="out" onClick={() => go("contact")} style={{ padding: "10px 16px", fontSize: 13 }}>Partner with Us</Btn>
                 </div>
               </div>
             </Card>
