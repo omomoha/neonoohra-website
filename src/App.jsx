@@ -467,8 +467,9 @@ function ClustersPage({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
 
   const clusterSlides = [
-    { img: IMG.carousel_1, icon: "📚", h: "Learning Clusters", s: "Simple, safe, & structured learning spaces that make education accessible without needing a traditional classroom.", fit: "auto 100%", pos: "right center" },
-    { img: IMG.carousel_2, icon: "📚", h: "Education Without Barriers", s: "Bringing quality learning directly to communities, homes, & families who need it most.", fit: "cover", pos: "center center" },
+    { img: IMG.eco_cluster[0], icon: "📚", h: "Learning Clusters", s: "Simple, safe, & structured learning spaces that make education accessible without needing a traditional classroom.", fit: "cover", pos: "center center" },
+    { img: IMG.eco_cluster[1], icon: "📚", h: "Education Without Barriers", s: "Bringing quality learning directly to communities, homes, & families who need it most.", fit: "cover", pos: "center top" },
+    { img: IMG.eco_cluster[2], icon: "📚", h: "Learning Beyond Walls", s: "With our mobile curriculum, our classes take place indoors, in a garden, beach or even under a tree!", fit: "cover", pos: "center top" },
   ];
 
   return (
@@ -564,9 +565,9 @@ function ClustersPage({ setPage }) {
         <SecTitle tag="Gallery" title="Real moments, real impact" sub="Real classroom moments, outdoor learning, facilitator support, children engaging with materials." />
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <RGrid cols={3} gap={16}>
-            <div style={{ height: 220, borderRadius: 16, overflow: "hidden" }}><img src={IMG.body_cluster1} alt="Facilitator support" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
-            <div style={{ height: 220, borderRadius: 16, overflow: "hidden" }}><img src={IMG.body_cluster2} alt="Classroom learning" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
-            <div style={{ height: 220, borderRadius: 16, overflow: "hidden" }}><img src={IMG.body_cluster3} alt="Children with materials" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
+            <div style={{ height: 220, borderRadius: 16, overflow: "hidden" }}><img src={IMG.eco_cluster[0]} alt="Children learning outdoors" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
+            <div style={{ height: 220, borderRadius: 16, overflow: "hidden" }}><img src={IMG.eco_cluster[1]} alt="Community classroom" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
+            <div style={{ height: 220, borderRadius: 16, overflow: "hidden" }}><img src={IMG.eco_cluster[2]} alt="Facilitator-led learning" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
           </RGrid>
         </div>
       </section>
@@ -582,8 +583,8 @@ function NeoSpeakPage({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
 
   const speakSlides = [
-    { img: IMG.carousel_1, icon: "🤟", h: "NeoSpeak", s: "A gamified sign language learning tool built to bridge communication gaps between verbal & non-verbal learners using AI & machine learning.", fit: "auto 100%", pos: "right center" },
-    { img: IMG.carousel_2, icon: "🤟", h: "Communication Without Limits", s: "Making sign language accessible, fun, & normalized so everyone can connect meaningfully.", fit: "cover", pos: "center center" },
+    { img: IMG.eco_neospeak[0], icon: "🤟", h: "NeoSpeak", s: "A gamified sign language learning tool built to bridge communication gaps between verbal & non-verbal learners using AI & machine learning.", fit: "contain", pos: "center center" },
+    { img: IMG.eco_neospeak[1], icon: "🤟", h: "Communication Without Limits", s: "Making sign language accessible, fun, & normalized so everyone can connect meaningfully.", fit: "contain", pos: "center center" },
   ];
 
   return (
@@ -653,8 +654,9 @@ function NeoCornerPage({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
 
   const cornerSlides = [
-    { img: IMG.carousel_1, icon: "🔬", h: "The Neo Corner", s: "A collaborative research community focused on improving learning experiences through shared knowledge & real-world insights.", fit: "auto 100%", pos: "right center" },
-    { img: IMG.carousel_2, icon: "🔬", h: "Where Ideas Shape Learning", s: "Educators, parents, researchers, & designers come together to explore better ways to teach & learn.", fit: "cover", pos: "center center" },
+    { img: IMG.eco_neocorner[0], icon: "🔬", h: "The Neo Corner", s: "A collaborative research community focused on improving learning experiences through shared knowledge & real-world insights.", fit: "cover", pos: "center center" },
+    { img: IMG.eco_neocorner[1], icon: "🔬", h: "Where Ideas Shape Learning", s: "Educators, parents, researchers, & designers come together to explore better ways to teach & learn.", fit: "cover", pos: "center center" },
+    { img: IMG.eco_neocorner[2], icon: "🔬", h: "Learning Through Community", s: "Where curiosity meets collaboration and every voice contributes to how we learn.", fit: "cover", pos: "center center" },
   ];
 
   return (
