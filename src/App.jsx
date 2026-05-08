@@ -807,7 +807,7 @@ function AboutPage() {
   const team = [
     { name: "Anne Noah", role: "Founder, NeoNoohra", c: C.pri },
     { name: "Ibukun Odutan", role: "Co-founder, NeoSpeak", c: C.acc },
-    { name: "John Abubakar", role: "Key Advisor (PhD, Digital Twin & Energy Management)", c: C.sec },
+    { name: "John Abubakar", role: "Key Advisor", c: C.sec },
     { name: "Praise John-Okwok", role: "Developmental Psychologist", c: C.pri },
     { name: "Demilade Agboola", role: "Behavioral Therapist / SEN Educator", c: C.acc },
     { name: "Toyosi Atoyebi", role: "Illustrator", c: C.sec },
@@ -820,7 +820,6 @@ function AboutPage() {
           <SecTitle tag="Our Story" title="About NeoNoohra" />
           <p style={{ fontSize: 17, color: C.tx, lineHeight: 1.8, marginBottom: 20 }}>NeoNoohra was built from firsthand experience with learning inequality and a clear belief that access to quality education should not depend on where a child is born or how they learn.</p>
           <p style={{ fontSize: 17, color: C.tx, lineHeight: 1.8, marginBottom: 20 }}>Built by a team of teachers, psychologists, special needs educators, and EdTech experts with experience across underserved communities and special needs environments, we are developing technology-driven solutions to address these gaps.</p>
-          <p style={{ fontSize: 18, fontWeight: 600, color: C.pri, lineHeight: 1.7 }}>Our goal is simple: to create systems that make learning accessible, inclusive, and effective for every kind of learner.</p>
         </div>
       </section>
 
