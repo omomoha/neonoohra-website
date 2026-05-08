@@ -229,7 +229,7 @@ function Footer({ setPage }) {
         </div>
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, marginBottom: 16, textTransform: "uppercase", letterSpacing: 1, color: C.sec }}>Ecosystem</h4>
-          {[["Learning Clusters", "clusters"], ["NeoSpeak", "neospeak"], ["Neo Curiosity Corner", "neocorner"]].map(([l, id]) => <a key={id} onClick={() => go(id)} style={{ display: "block", color: "rgba(255,255,255,0.65)", fontSize: 14, cursor: "pointer", marginBottom: 10, textDecoration: "none" }}>{l}</a>)}
+          {[["Learning Clusters", "clusters"], ["NeoSpeak", "neospeak"], ["The Neo Corner", "neocorner"]].map(([l, id]) => <a key={id} onClick={() => go(id)} style={{ display: "block", color: "rgba(255,255,255,0.65)", fontSize: 14, cursor: "pointer", marginBottom: 10, textDecoration: "none" }}>{l}</a>)}
         </div>
         <div>
           <h4 style={{ fontSize: 14, fontWeight: 700, marginBottom: 16, textTransform: "uppercase", letterSpacing: 1, color: C.sec }}>Get Involved</h4>
@@ -252,7 +252,7 @@ function HomePage({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
 
   const slides = [
-    { img: IMG.carousel_1, h: "Unlocking Possibilities for Neurodiversity", s: "A learning ecosystem designed for every kind of learner in classrooms, communities, & beyond." },
+    { img: IMG.carousel_1, h: "Unlocking Possibilities for Neurodiversity", s: "Building adaptive education in shared spaces for every kind of learner." },
     { img: IMG.carousel_2, h: "Where Every Learner Belongs", s: "We dream of a future where the non-verbal can have a seat at the table. In regular jobs & spaces because learning sign language is accessible & normalised." },
     { img: IMG.carousel_3, h: "Real Access. Real Impact.", s: "Combining technology, inclusive education practices & research to create high quality learning experiences." },
     { img: IMG.carousel_4, h: "Technology Meets Learning", s: "Equipping learners with digital tools and immersive experiences that make education engaging & accessible." },
@@ -316,11 +316,8 @@ function HomePage({ setPage }) {
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr", gap: mob ? 32 : 64, alignItems: "center" }}>
           <div>
             <SecTitle tag="About Us" title="What is NeoNoohra?" align="left" />
-            <p style={{ fontSize: 17, color: C.tx, lineHeight: 1.8, marginBottom: 16 }}>NeoNoohra is a learning ecosystem that provides high quality learning experiences for the neurodivergent & the neurotypical by combining technology, inclusive education practices & research.</p>
-            <p style={{ fontSize: 17, color: C.tx, lineHeight: 1.8, marginBottom: 8 }}><strong>Who is it for?</strong></p>
-            <p style={{ fontSize: 17, color: C.tx, lineHeight: 1.8, marginBottom: 24 }}>All learners, especially neurodivergent & underserved communities.</p>
-            <p style={{ fontSize: 17, color: C.tx, lineHeight: 1.8, marginBottom: 8 }}>We provide:</p>
-            <p style={{ fontSize: 22, fontWeight: 700, color: C.pri }}>Real access. Real impact.</p>
+            <p style={{ fontSize: 17, color: C.tx, lineHeight: 1.8, marginBottom: 24 }}>NeoNoohra is a learning ecosystem building adaptive education in shared spaces for every kind of learner.</p>
+            <p style={{ fontSize: 22, fontWeight: 700, color: C.pri }}>We adapt education to ensure learning, not the other way around.</p>
           </div>
           <div style={{ height: mob ? 260 : 380, borderRadius: 16, overflow: "hidden" }}><img src={IMG.body_children} alt="Children learning together" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
         </div>
@@ -334,7 +331,7 @@ function HomePage({ setPage }) {
             {[
               { icon: "📚", t: "Learning Clusters", d: "Safe, flexible learning spaces for out-of-school & homeschooled children.", p: "clusters", c: C.pri },
               { icon: "🤟", t: "NeoSpeak", d: "Gamified sign language learning powered by AI & machine learning.", p: "neospeak", c: C.acc },
-              { icon: "🔬", t: "Neo Curiosity Corner", d: "A research group where educators, parents, & researchers explore better ways to support learning.", p: "neocorner", c: C.sec },
+              { icon: "🔬", t: "The Neo Corner", d: "A research group where educators, parents, & researchers explore better ways to support learning.", p: "neocorner", c: C.sec },
             ].map((e, i) => (
               <Card key={i} border={`4px solid ${e.c}`} style={{ cursor: "pointer" }}>
                 <div onClick={() => go(e.p)}>
@@ -403,7 +400,7 @@ function EcosystemPage({ setPage }) {
   const pillars = [
     { icon: "📚", t: "Learning Clusters", p: "clusters", d: "Learning clusters are simple, structured learning environments designed to provide access to high-quality education without the need for a traditional classroom.", who: ["Neurodivergent & neurotypical learners", "Homeschooling families", "Out-of-school children"], c: C.pri, grad: "green", emoji: "🏫" },
     { icon: "🤟", t: "NeoSpeak", p: "neospeak", d: "NeoSpeak is a gamified sign language learning tool designed to make communication accessible, engaging, & inclusive.", who: ["Non-verbal individuals", "Verbal individuals"], c: C.acc, grad: "purple", emoji: "🤟" },
-    { icon: "🔬", t: "Neo Curiosity Corner", p: "neocorner", d: "A research group where learning is continuously explored, tested, & improved through real conversations & shared experiences.", who: ["Educators", "Learning designers", "Psychologists", "Parents", "Researchers", "Enthusiasts interested in inclusive learning"], c: C.sec, grad: "orange", emoji: "💡" },
+    { icon: "🔬", t: "The Neo Corner", p: "neocorner", d: "A research group where learning is continuously explored, tested, & improved through real conversations & shared experiences.", who: ["Educators", "Learning designers", "Psychologists", "Parents", "Researchers", "Enthusiasts interested in inclusive learning"], c: C.sec, grad: "orange", emoji: "💡" },
   ];
 
   return (
@@ -462,12 +459,13 @@ function ClustersPage({ setPage }) {
           <RGrid cols={2}>
             <Card border="4px solid #EF4444">
               <h3 style={{ fontSize: 24, fontWeight: 700, color: "#EF4444", marginBottom: 16 }}>The Problem</h3>
-              <p style={{ fontSize: 16, color: C.tx, lineHeight: 1.8 }}>Many children lack access to quality education due to financial, structural, or learning-related barriers.</p>
-              <p style={{ fontSize: 16, color: C.tx, lineHeight: 1.8, marginTop: 12 }}>The Neurodivergent learners are often underserved, out-of-school children are left behind, & homeschooling families struggle to find structured, high-quality resources.</p>
+              <p style={{ fontSize: 16, color: C.tx, lineHeight: 1.8 }}>Many children are locked out of quality education due to financial and learning-related barriers.</p>
+              <p style={{ fontSize: 16, color: C.tx, lineHeight: 1.8, marginTop: 12 }}>Neurodivergent learners are underserved, out-of-school children are left behind, and homeschooling families struggle to find structured, high-quality support.</p>
             </Card>
             <Card border={`4px solid ${C.pri}`}>
               <h3 style={{ fontSize: 24, fontWeight: 700, color: C.pri, marginBottom: 16 }}>The Solution</h3>
               <p style={{ fontSize: 16, color: C.tx, lineHeight: 1.8 }}>Simple, safe, & structured learning spaces that make education accessible without needing a traditional classroom.</p>
+              <p style={{ fontSize: 16, color: C.tx, lineHeight: 1.8, marginTop: 12 }}>With our mobile curriculum, our classes take place indoors, in a garden, beach or even under a tree!</p>
             </Card>
           </RGrid>
         </div>
@@ -566,7 +564,7 @@ function NeoSpeakPage({ setPage }) {
       <HeroCarousel slides={speakSlides} gradientColor={C.dk} accentColor={C.acc}>
         <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
           <Btn onClick={() => go("contact")}>Join the Waitlist</Btn>
-          <Btn v="outW" href={PAY.rec}>Support Development</Btn>
+          <Btn v="outW" onClick={() => go("donate")}>Support Development</Btn>
         </div>
       </HeroCarousel>
 
@@ -577,7 +575,7 @@ function NeoSpeakPage({ setPage }) {
             <p style={{ fontSize: 17, color: C.tx, lineHeight: 1.8, marginBottom: 20 }}>Communication is fundamental to learning, connection, & confidence.</p>
             <p style={{ fontSize: 17, color: C.tx, lineHeight: 1.8, marginBottom: 20 }}>Sign language creates a bridge between different kinds of learners, making interaction more inclusive & meaningful.</p>
             <div style={{ background: C.accL, borderRadius: 16, padding: 24, borderLeft: `4px solid ${C.acc}` }}>
-              <p style={{ fontSize: 16, color: C.dk, lineHeight: 1.7, fontWeight: 500 }}>NeoSpeak is built to make communication more inclusive, accessible, & natural.</p>
+              <p style={{ fontSize: 16, color: C.dk, lineHeight: 1.7, fontWeight: 500 }}>NeoSpeak is built to make communication inclusive, accessible, & natural.</p>
               <Sparkle size={14} color={C.sec} style={{ marginTop: 8, opacity: 0.6 }} />
             </div>
           </div>
@@ -612,7 +610,7 @@ function NeoSpeakPage({ setPage }) {
           <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
             <Btn v="wht" onClick={() => go("contact")}>Join Waitlist</Btn>
             <Btn v="outW" onClick={() => go("contact")}>Partner with Us</Btn>
-            <Btn v="sec" href={PAY.rec}>Support Development</Btn>
+            <Btn v="sec" onClick={() => go("donate")}>Support Development</Btn>
           </div>
         </div>
       </section>
@@ -621,14 +619,14 @@ function NeoSpeakPage({ setPage }) {
 }
 
 /* ===========================
-   5. NEO CURIOSITY CORNER PAGE
+   5. THE NEO CORNER PAGE
    =========================== */
 function NeoCornerPage({ setPage }) {
   const mob = useMedia("(max-width: 768px)");
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
 
   const cornerSlides = [
-    { img: IMG.carousel_1, icon: "🔬", h: "Neo Curiosity Corner", s: "A collaborative research community focused on improving learning experiences through shared knowledge & real-world insights." },
+    { img: IMG.carousel_1, icon: "🔬", h: "The Neo Corner", s: "A collaborative research community focused on improving learning experiences through shared knowledge & real-world insights." },
     { img: IMG.carousel_2, icon: "🔬", h: "Where Ideas Shape Learning", s: "Educators, parents, researchers, & designers come together to explore better ways to teach & learn." },
   ];
 
@@ -797,24 +795,6 @@ function GetInvolvedPage({ setPage }) {
         </div>
       </section>
 
-      <section style={{ padding: mob ? "40px 20px" : "60px 24px", background: C.w, textAlign: "center" }}>
-        <h3 style={{ fontSize: mob ? 20 : 24, fontWeight: 700, color: C.dk, marginBottom: 12 }}>Want to give regularly?</h3>
-        <p style={{ fontSize: mob ? 15 : 16, color: C.txL, lineHeight: 1.7, marginBottom: 24, maxWidth: 500, margin: "0 auto 24px" }}>Set up a recurring donation to provide sustained support for learners who need it most.</p>
-        <Btn v="sec" href={PAY.rec}>Set Up Recurring Donation</Btn>
-      </section>
-
-      <section style={{ padding: mob ? "40px 20px" : "60px 24px", background: C.bgA }}>
-        <div style={{ maxWidth: 500, margin: "0 auto", textAlign: "center" }}>
-          <h3 style={{ fontSize: 20, fontWeight: 700, color: C.dk, marginBottom: 20 }}>International Bank Transfer</h3>
-          <Card>
-            <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr", gap: 24, textAlign: "left" }}>
-              <div><p style={{ fontSize: 13, color: C.txL, marginBottom: 4, fontWeight: 600 }}>GBP Account</p><p style={{ fontSize: 18, fontWeight: 700, color: C.dk }}>0736144516</p><p style={{ fontSize: 13, color: C.txL }}>GTBank</p></div>
-              <div><p style={{ fontSize: 13, color: C.txL, marginBottom: 4, fontWeight: 600 }}>USD Account</p><p style={{ fontSize: 18, fontWeight: 700, color: C.dk }}>0737144509</p><p style={{ fontSize: 13, color: C.txL }}>GTBank</p></div>
-            </div>
-            <p style={{ fontSize: 13, color: C.txL, marginTop: 16, textAlign: "center" }}>SWIFT Code: GTBINGLAXXX</p>
-          </Card>
-        </div>
-      </section>
     </div>
   );
 }
@@ -893,7 +873,7 @@ function ContactPage({ prefill }) {
 
   useEffect(() => { if (prefill) setForm((f) => ({ ...f, purpose: prefill })); }, [prefill]);
 
-  const purposes = ["Join NeoSpeak Waitlist", "Join the Neo Corner Community", "Partner", "Volunteer", "None of the above"];
+  const purposes = ["Join NeoSpeak Waitlist", "Join the Neo Corner Community", "Homeschool enquiry", "Partner", "Volunteer", "None of the above"];
   const handleSubmit = (e) => { e.preventDefault(); setSubmitted(true); };
   const inp = { width: "100%", padding: "14px 16px", border: `1.5px solid ${C.bgA}`, borderRadius: 12, fontSize: 15, outline: "none", fontFamily: "inherit", background: C.w, boxSizing: "border-box", transition: "border 0.2s" };
 
@@ -917,6 +897,13 @@ function ContactPage({ prefill }) {
             ) : (
               <form onSubmit={handleSubmit}>
                 <h3 style={{ fontSize: 22, fontWeight: 700, color: C.dk, marginBottom: 24 }}>Send us a message</h3>
+                <div style={{ marginBottom: 18 }}>
+                  <label style={{ fontSize: 13, fontWeight: 600, color: C.dk, display: "block", marginBottom: 6 }}>Purpose * <span style={{ fontWeight: 400, color: C.txL }}>(Why are you reaching out?)</span></label>
+                  <select value={form.purpose} onChange={(e) => setForm({ ...form, purpose: e.target.value })} required style={{ ...inp, cursor: "pointer", appearance: "auto", color: form.purpose ? C.dk : C.txL }}>
+                    <option value="">- Select a purpose -</option>
+                    {purposes.map((p) => <option key={p} value={p}>{p}</option>)}
+                  </select>
+                </div>
                 <div style={{ display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr", gap: 18, marginBottom: 18 }}>
                   <div>
                     <label style={{ fontSize: 13, fontWeight: 600, color: C.dk, display: "block", marginBottom: 6 }}>Full Name *</label>
@@ -930,13 +917,6 @@ function ContactPage({ prefill }) {
                 <div style={{ marginBottom: 18 }}>
                   <label style={{ fontSize: 13, fontWeight: 600, color: C.dk, display: "block", marginBottom: 6 }}>Phone Number</label>
                   <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} style={inp} placeholder="+234..." />
-                </div>
-                <div style={{ marginBottom: 18 }}>
-                  <label style={{ fontSize: 13, fontWeight: 600, color: C.dk, display: "block", marginBottom: 6 }}>Purpose * <span style={{ fontWeight: 400, color: C.txL }}>(Why are you reaching out?)</span></label>
-                  <select value={form.purpose} onChange={(e) => setForm({ ...form, purpose: e.target.value })} required style={{ ...inp, cursor: "pointer", appearance: "auto", color: form.purpose ? C.dk : C.txL }}>
-                    <option value="">- Select a purpose -</option>
-                    {purposes.map((p) => <option key={p} value={p}>{p}</option>)}
-                  </select>
                 </div>
                 <div style={{ marginBottom: 24 }}>
                   <label style={{ fontSize: 13, fontWeight: 600, color: C.dk, display: "block", marginBottom: 6 }}>Message</label>
@@ -961,7 +941,11 @@ function ContactPage({ prefill }) {
                 <h4 style={{ fontSize: 16, fontWeight: 700, color: C.dk }}>Follow Us</h4>
               </div>
               <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                {["Twitter", "Instagram", "LinkedIn"].map((s) => <span key={s} style={{ background: C.priL, color: C.pri, padding: "8px 16px", borderRadius: 20, fontSize: 13, fontWeight: 500, cursor: "pointer" }}>{s}</span>)}
+                {[
+                  { label: "Instagram", url: "https://www.instagram.com/neonoohra?igsh=MTV0aHB4ZGpyNDZtag%3D%3D&utm_source=qr" },
+                  { label: "LinkedIn", url: "https://www.linkedin.com/company/106600277/" },
+                  { label: "YouTube", url: "https://youtube.com/playlist?list=PLxqPHDowly2_e75SJfSNCpiMcX2MGzReD&si=E_Jag7m_RpSWoGvo" },
+                ].map((s) => <a key={s.label} href={s.url} target="_blank" rel="noopener noreferrer" style={{ background: C.priL, color: C.pri, padding: "8px 16px", borderRadius: 20, fontSize: 13, fontWeight: 500, cursor: "pointer", textDecoration: "none" }}>{s.label}</a>)}
               </div>
             </Card>
           </div>
