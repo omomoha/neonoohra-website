@@ -31,6 +31,9 @@ const IMG = {
   body_cluster2: "/images/body_cluster2.jpg",
   body_cluster3: "/images/body_cluster3.jpg",
   body_neospeak: "/images/body_neospeak.jpg",
+  eco_cluster: ["/images/eco_cluster_1.jpg", "/images/eco_cluster_2.jpg", "/images/eco_cluster_3.jpg"],
+  eco_neospeak: ["/images/eco_neospeak_1.jpg", "/images/eco_neospeak_2.jpg"],
+  eco_neocorner: ["/images/eco_neocorner_1.jpg", "/images/eco_neocorner_2.jpg", "/images/eco_neocorner_3.jpg"],
   team_anne: "/images/team_anne.jpg",
   team_ibukun: "/images/team_ibukun.jpg",
   team_john: "/images/team_john.jpg",
@@ -151,6 +154,24 @@ function PlaceholderImg({ emoji, label, h = 300, gradient, r = 16, style: cs = {
       <div style={{ position: "absolute", bottom: -20, left: -20, width: 80, height: 80, borderRadius: "50%", background: "rgba(255,255,255,0.1)" }} />
       <span style={{ fontSize: 48, zIndex: 1 }}>{emoji}</span>
       <span style={{ fontSize: 13, fontWeight: 600, color: C.txL, letterSpacing: 0.5, textTransform: "uppercase", zIndex: 1 }}>{label}</span>
+    </div>
+  );
+}
+
+function EcoCarousel({ images, h = 340, r = 16 }) {
+  const [idx, setIdx] = useState(0);
+  const len = images.length;
+  useEffect(() => { const t = setInterval(() => setIdx(i => (i + 1) % len), 4000); return () => clearInterval(t); }, [len]);
+  return (
+    <div style={{ height: h, borderRadius: r, position: "relative", overflow: "hidden", background: C.bgA }}>
+      {images.map((src, i) => (
+        <img key={i} src={src} alt="" style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", borderRadius: r, opacity: i === idx ? 1 : 0, transition: "opacity 0.6s ease-in-out" }} />
+      ))}
+      <div style={{ position: "absolute", bottom: 12, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 8, zIndex: 2 }}>
+        {images.map((_, i) => (
+          <button key={i} onClick={() => setIdx(i)} style={{ width: i === idx ? 24 : 8, height: 8, borderRadius: 4, background: i === idx ? C.w : "rgba(255,255,255,0.5)", border: "none", cursor: "pointer", transition: "all 0.3s", padding: 0 }} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -404,9 +425,9 @@ function EcosystemPage({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
 
   const pillars = [
-    { icon: "📚", t: "Learning Clusters", p: "clusters", d: "Learning clusters are simple, structured learning environments designed to provide access to high-quality education without the need for a traditional classroom.", who: ["Neurodivergent & neurotypical learners", "Homeschooling families", "Out-of-school children"], c: C.pri, grad: "green", emoji: "🏫" },
-    { icon: "🤟", t: "NeoSpeak", p: "neospeak", d: "NeoSpeak is a gamified sign language learning tool designed to make communication accessible, engaging, & inclusive.", who: ["Non-verbal individuals", "Verbal individuals"], c: C.acc, grad: "purple", emoji: "🤟" },
-    { icon: "🔬", t: "The Neo Corner", p: "neocorner", d: "A research group where learning is continuously explored, tested, & improved through real conversations & shared experiences.", who: ["Educators", "Learning designers", "Psychologists", "Parents", "Researchers", "Enthusiasts interested in inclusive learning"], c: C.sec, grad: "orange", emoji: "💡" },
+    { icon: "📚", t: "Learning Clusters", p: "clusters", d: "Learning clusters are simple, structured learning environments designed to provide access to high-quality education without the need for a traditional classroom.", who: ["Neurodivergent & neurotypical learners", "Homeschooling families", "Out-of-school children"], c: C.pri, grad: "green", emoji: "🏫", imgs: IMG.eco_cluster },
+    { icon: "🤟", t: "NeoSpeak", p: "neospeak", d: "NeoSpeak is a gamified sign language learning tool designed to make communication accessible, engaging, & inclusive.", who: ["Non-verbal individuals", "Verbal individuals"], c: C.acc, grad: "purple", emoji: "🤟", imgs: IMG.eco_neospeak },
+    { icon: "🔬", t: "The Neo Corner", p: "neocorner", d: "A research group where learning is continuously explored, tested, & improved through real conversations & shared experiences.", who: ["Educators", "Learning designers", "Psychologists", "Parents", "Researchers", "Enthusiasts interested in inclusive learning"], c: C.sec, grad: "orange", emoji: "💡", imgs: IMG.eco_neocorner },
   ];
 
   return (
@@ -417,7 +438,7 @@ function EcosystemPage({ setPage }) {
       {pillars.map((p, i) => (
         <section key={i} style={{ padding: mob ? "60px 20px" : "80px 24px", background: i % 2 === 0 ? C.w : C.bgA }}>
           <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: mob ? "1fr" : "1fr 1fr", gap: mob ? 32 : 64, alignItems: "center" }}>
-            {(!mob && i % 2 === 1) && <PlaceholderImg emoji={p.emoji} label={p.t} h={340} gradient={p.grad} />}
+            {(!mob && i % 2 === 1) && <EcoCarousel images={p.imgs} h={340} />}
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
                 <span style={{ fontSize: 36 }}>{p.icon}</span>
@@ -430,7 +451,7 @@ function EcosystemPage({ setPage }) {
               </div>
               <Btn onClick={() => go(p.p)} style={{ background: p.c }}>Enter this world →</Btn>
             </div>
-            {(mob || i % 2 === 0) && <PlaceholderImg emoji={p.emoji} label={p.t} h={mob ? 240 : 340} gradient={p.grad} />}
+            {(mob || i % 2 === 0) && <EcoCarousel images={p.imgs} h={mob ? 240 : 340} />}
           </div>
         </section>
       ))}
