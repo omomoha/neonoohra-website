@@ -870,11 +870,26 @@ function ContactPage({ prefill }) {
   const mob = useMedia("(max-width: 768px)");
   const [form, setForm] = useState({ name: "", email: "", phone: "", purpose: prefill || "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => { if (prefill) setForm((f) => ({ ...f, purpose: prefill })); }, [prefill]);
 
   const purposes = ["Join NeoSpeak Waitlist", "Join the Neo Corner Community", "Homeschool enquiry", "Partner", "Volunteer", "None of the above"];
-  const handleSubmit = (e) => { e.preventDefault(); setSubmitted(true); };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    setError("");
+    try {
+      const res = await fetch("https://formspree.io/f/mlgzwvnw", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ purpose: form.purpose, name: form.name, email: form.email, phone: form.phone, message: form.message }),
+      });
+      if (res.ok) { setSubmitted(true); } else { setError("Something went wrong. Please try again."); }
+    } catch { setError("Network error. Please check your connection."); }
+    setSending(false);
+  };
   const inp = { width: "100%", padding: "14px 16px", border: `1.5px solid ${C.bgA}`, borderRadius: 12, fontSize: 15, outline: "none", fontFamily: "inherit", background: C.w, boxSizing: "border-box", transition: "border 0.2s" };
 
   return (
@@ -922,7 +937,8 @@ function ContactPage({ prefill }) {
                   <label style={{ fontSize: 13, fontWeight: 600, color: C.dk, display: "block", marginBottom: 6 }}>Message</label>
                   <textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} style={{ ...inp, minHeight: 140, resize: "vertical" }} placeholder="Tell us more about how we can help..." />
                 </div>
-                <Btn full style={{ padding: "16px 28px", fontSize: 16 }}>Send Message</Btn>
+                {error && <p style={{ color: "#EF4444", fontSize: 14, marginBottom: 12 }}>{error}</p>}
+                <Btn full style={{ padding: "16px 28px", fontSize: 16, opacity: sending ? 0.7 : 1 }} disabled={sending}>{sending ? "Sending..." : "Send Message"}</Btn>
               </form>
             )}
           </Card>
