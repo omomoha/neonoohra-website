@@ -252,7 +252,7 @@ function HomePage({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
 
   const slides = [
-    { img: IMG.carousel_1, h: "Unlocking Possibilities for Neurodiversity", s: "Building adaptive education in shared spaces for every kind of learner.", fit: "auto 100%", pos: "right center" },
+    { img: IMG.carousel_1, h: "Building adaptive education in shared spaces", s: "Building adaptive education in shared spaces for every kind of learner.", fit: "auto 100%", pos: "right center" },
     { img: IMG.carousel_2, h: "Where Every Learner Belongs", s: "We dream of a future where the non-verbal can have a seat at the table. In regular jobs & spaces because learning sign language is accessible & normalised.", fit: "cover", pos: "center center" },
     { img: IMG.carousel_3, h: "Real Access. Real Impact.", s: "Combining technology, inclusive education practices & research to create high quality learning experiences.", fit: "auto 100%", pos: "right center" },
     { img: IMG.carousel_4, h: "Technology Meets Learning", s: "Equipping learners with digital tools and immersive experiences that make education engaging & accessible.", fit: "auto 100%", pos: "right center" },
