@@ -62,7 +62,7 @@ function HeroCarousel({ slides, gradientColor = C.dk, accentColor = C.sec, child
     <section style={{ position: "relative", minHeight: mob ? "55vh" : "65vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
       {slides.map((s, i) => (
         <div key={i} style={{ position: "absolute", inset: 0, opacity: i === cur ? 1 : 0, transition: "opacity 1s ease-in-out" }}>
-          <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${s.img})`, backgroundSize: "cover", backgroundPosition: "center top" }} />
+          <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${s.img})`, backgroundSize: "cover", backgroundPosition: "center center" }} />
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(135deg, ${gradientColor}E6 0%, ${gradientColor}99 50%, ${gradientColor}40 100%)` }} />
           <Sparkle size={48} color={`${accentColor}40`} style={{ position: "absolute", top: "12%", right: "15%", zIndex: 1 }} />
           <Sparkle size={28} color={`${accentColor}30`} style={{ position: "absolute", bottom: "20%", right: "30%", zIndex: 1 }} />
@@ -269,7 +269,7 @@ function HomePage({ setPage }) {
       <section style={{ position: "relative", minHeight: mob ? "75vh" : "80vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
         {slides.map((s, i) => (
           <div key={i} style={{ position: "absolute", inset: 0, opacity: i === cur ? 1 : 0, transition: "opacity 1s ease-in-out" }}>
-            <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${s.img})`, backgroundSize: "cover", backgroundPosition: "center top" }} />
+            <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${s.img})`, backgroundSize: "cover", backgroundPosition: "center center" }} />
             {/* Dark overlay for text readability */}
             <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to right, ${C.dk}E6 0%, ${C.dk}99 50%, ${C.dk}40 100%)` }} />
             {/* Sparkle decorations */}
