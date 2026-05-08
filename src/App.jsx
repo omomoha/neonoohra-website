@@ -62,7 +62,7 @@ function HeroCarousel({ slides, gradientColor = C.dk, accentColor = C.sec, child
     <section style={{ position: "relative", minHeight: mob ? "55vh" : "65vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
       {slides.map((s, i) => (
         <div key={i} style={{ position: "absolute", inset: 0, opacity: i === cur ? 1 : 0, transition: "opacity 1s ease-in-out" }}>
-          <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${s.img})`, backgroundSize: "cover", backgroundPosition: "center center" }} />
+          <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${s.img})`, backgroundSize: s.fit || "cover", backgroundPosition: s.pos || "center center", backgroundRepeat: "no-repeat", backgroundColor: gradientColor }} />
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(135deg, ${gradientColor}E6 0%, ${gradientColor}99 50%, ${gradientColor}40 100%)` }} />
           <Sparkle size={48} color={`${accentColor}40`} style={{ position: "absolute", top: "12%", right: "15%", zIndex: 1 }} />
           <Sparkle size={28} color={`${accentColor}30`} style={{ position: "absolute", bottom: "20%", right: "30%", zIndex: 1 }} />
@@ -252,10 +252,10 @@ function HomePage({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
 
   const slides = [
-    { img: IMG.carousel_1, h: "Unlocking Possibilities for Neurodiversity", s: "Building adaptive education in shared spaces for every kind of learner." },
-    { img: IMG.carousel_2, h: "Where Every Learner Belongs", s: "We dream of a future where the non-verbal can have a seat at the table. In regular jobs & spaces because learning sign language is accessible & normalised." },
-    { img: IMG.carousel_3, h: "Real Access. Real Impact.", s: "Combining technology, inclusive education practices & research to create high quality learning experiences." },
-    { img: IMG.carousel_4, h: "Technology Meets Learning", s: "Equipping learners with digital tools and immersive experiences that make education engaging & accessible." },
+    { img: IMG.carousel_1, h: "Unlocking Possibilities for Neurodiversity", s: "Building adaptive education in shared spaces for every kind of learner.", fit: "auto 100%", pos: "right center" },
+    { img: IMG.carousel_2, h: "Where Every Learner Belongs", s: "We dream of a future where the non-verbal can have a seat at the table. In regular jobs & spaces because learning sign language is accessible & normalised.", fit: "cover", pos: "center center" },
+    { img: IMG.carousel_3, h: "Real Access. Real Impact.", s: "Combining technology, inclusive education practices & research to create high quality learning experiences.", fit: "auto 100%", pos: "right center" },
+    { img: IMG.carousel_4, h: "Technology Meets Learning", s: "Equipping learners with digital tools and immersive experiences that make education engaging & accessible.", fit: "auto 100%", pos: "right center" },
   ];
 
   useEffect(() => {
@@ -269,7 +269,7 @@ function HomePage({ setPage }) {
       <section style={{ position: "relative", minHeight: mob ? "75vh" : "80vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
         {slides.map((s, i) => (
           <div key={i} style={{ position: "absolute", inset: 0, opacity: i === cur ? 1 : 0, transition: "opacity 1s ease-in-out" }}>
-            <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${s.img})`, backgroundSize: "cover", backgroundPosition: "center center" }} />
+            <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${s.img})`, backgroundSize: s.fit || "cover", backgroundPosition: s.pos || "center center", backgroundRepeat: "no-repeat", backgroundColor: C.dk }} />
             {/* Dark overlay for text readability */}
             <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to right, ${C.dk}E6 0%, ${C.dk}99 50%, ${C.dk}40 100%)` }} />
             {/* Sparkle decorations */}
@@ -440,8 +440,8 @@ function ClustersPage({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
 
   const clusterSlides = [
-    { img: IMG.carousel_1, icon: "📚", h: "Learning Clusters", s: "Simple, safe, & structured learning spaces that make education accessible without needing a traditional classroom." },
-    { img: IMG.carousel_2, icon: "📚", h: "Education Without Barriers", s: "Bringing quality learning directly to communities, homes, & families who need it most." },
+    { img: IMG.carousel_1, icon: "📚", h: "Learning Clusters", s: "Simple, safe, & structured learning spaces that make education accessible without needing a traditional classroom.", fit: "auto 100%", pos: "right center" },
+    { img: IMG.carousel_2, icon: "📚", h: "Education Without Barriers", s: "Bringing quality learning directly to communities, homes, & families who need it most.", fit: "cover", pos: "center center" },
   ];
 
   return (
@@ -555,8 +555,8 @@ function NeoSpeakPage({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
 
   const speakSlides = [
-    { img: IMG.carousel_1, icon: "🤟", h: "NeoSpeak", s: "A gamified sign language learning tool built to bridge communication gaps between verbal & non-verbal learners using AI & machine learning." },
-    { img: IMG.carousel_2, icon: "🤟", h: "Communication Without Limits", s: "Making sign language accessible, fun, & normalized so everyone can connect meaningfully." },
+    { img: IMG.carousel_1, icon: "🤟", h: "NeoSpeak", s: "A gamified sign language learning tool built to bridge communication gaps between verbal & non-verbal learners using AI & machine learning.", fit: "auto 100%", pos: "right center" },
+    { img: IMG.carousel_2, icon: "🤟", h: "Communication Without Limits", s: "Making sign language accessible, fun, & normalized so everyone can connect meaningfully.", fit: "cover", pos: "center center" },
   ];
 
   return (
@@ -626,8 +626,8 @@ function NeoCornerPage({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
 
   const cornerSlides = [
-    { img: IMG.carousel_1, icon: "🔬", h: "The Neo Corner", s: "A collaborative research community focused on improving learning experiences through shared knowledge & real-world insights." },
-    { img: IMG.carousel_2, icon: "🔬", h: "Where Ideas Shape Learning", s: "Educators, parents, researchers, & designers come together to explore better ways to teach & learn." },
+    { img: IMG.carousel_1, icon: "🔬", h: "The Neo Corner", s: "A collaborative research community focused on improving learning experiences through shared knowledge & real-world insights.", fit: "auto 100%", pos: "right center" },
+    { img: IMG.carousel_2, icon: "🔬", h: "Where Ideas Shape Learning", s: "Educators, parents, researchers, & designers come together to explore better ways to teach & learn.", fit: "cover", pos: "center center" },
   ];
 
   return (
