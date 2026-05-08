@@ -468,8 +468,8 @@ function ClustersPage({ setPage }) {
 
   const clusterSlides = [
     { img: IMG.eco_cluster[0], icon: "📚", h: "Learning Clusters", s: "Simple, safe, & structured learning spaces that make education accessible without needing a traditional classroom.", fit: "cover", pos: "center center" },
-    { img: IMG.eco_cluster[1], icon: "📚", h: "Education Without Barriers", s: "Bringing quality learning directly to communities, homes, & families who need it most.", fit: "cover", pos: "center top" },
-    { img: IMG.eco_cluster[2], icon: "📚", h: "Learning Beyond Walls", s: "With our mobile curriculum, our classes take place indoors, in a garden, beach or even under a tree!", fit: "cover", pos: "center top" },
+    { img: IMG.eco_cluster[1], icon: "📚", h: "Education Without Barriers", s: "Bringing quality learning directly to communities, homes, & families who need it most.", fit: "auto 100%", pos: "center center" },
+    { img: IMG.eco_cluster[2], icon: "📚", h: "Learning Beyond Walls", s: "With our mobile curriculum, our classes take place indoors, in a garden, beach or even under a tree!", fit: "auto 100%", pos: "center center" },
   ];
 
   return (
@@ -654,9 +654,9 @@ function NeoCornerPage({ setPage }) {
   const go = (id) => { setPage(id); window.scrollTo(0, 0); };
 
   const cornerSlides = [
-    { img: IMG.eco_neocorner[0], icon: "🔬", h: "The Neo Corner", s: "A collaborative research community focused on improving learning experiences through shared knowledge & real-world insights.", fit: "cover", pos: "center center" },
-    { img: IMG.eco_neocorner[1], icon: "🔬", h: "Where Ideas Shape Learning", s: "Educators, parents, researchers, & designers come together to explore better ways to teach & learn.", fit: "cover", pos: "center center" },
-    { img: IMG.eco_neocorner[2], icon: "🔬", h: "Learning Through Community", s: "Where curiosity meets collaboration and every voice contributes to how we learn.", fit: "cover", pos: "center center" },
+    { img: IMG.eco_neocorner[0], icon: "🔬", h: "The Neo Corner", s: "A collaborative research community focused on improving learning experiences through shared knowledge & real-world insights.", fit: "auto 100%", pos: "center center" },
+    { img: IMG.eco_neocorner[1], icon: "🔬", h: "Where Ideas Shape Learning", s: "Educators, parents, researchers, & designers come together to explore better ways to teach & learn.", fit: "auto 100%", pos: "center center" },
+    { img: IMG.eco_neocorner[2], icon: "🔬", h: "Learning Through Community", s: "Where curiosity meets collaboration and every voice contributes to how we learn.", fit: "auto 100%", pos: "center center" },
   ];
 
   return (
