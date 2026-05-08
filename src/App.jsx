@@ -575,7 +575,7 @@ function NeoSpeakPage({ setPage }) {
             <p style={{ fontSize: 17, color: C.tx, lineHeight: 1.8, marginBottom: 20 }}>Communication is fundamental to learning, connection, & confidence.</p>
             <p style={{ fontSize: 17, color: C.tx, lineHeight: 1.8, marginBottom: 20 }}>Sign language creates a bridge between different kinds of learners, making interaction more inclusive & meaningful.</p>
             <div style={{ background: C.accL, borderRadius: 16, padding: 24, borderLeft: `4px solid ${C.acc}` }}>
-              <p style={{ fontSize: 16, color: C.dk, lineHeight: 1.7, fontWeight: 500 }}>NeoSpeak is built to make communication inclusive, accessible, & natural.</p>
+              <p style={{ fontSize: 16, color: C.dk, lineHeight: 1.7, fontWeight: 500 }}>NeoSpeak is built to make communication inclusive & accessible.</p>
               <Sparkle size={14} color={C.sec} style={{ marginTop: 8, opacity: 0.6 }} />
             </div>
           </div>
