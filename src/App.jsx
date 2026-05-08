@@ -31,6 +31,12 @@ const IMG = {
   body_cluster2: "/images/body_cluster2.jpg",
   body_cluster3: "/images/body_cluster3.jpg",
   body_neospeak: "/images/body_neospeak.jpg",
+  team_anne: "/images/team_anne.jpg",
+  team_ibukun: "/images/team_ibukun.jpg",
+  team_john: "/images/team_john.jpg",
+  team_praise: "/images/team_praise.jpg",
+  team_demilade: "/images/team_demilade.jpg",
+  team_toyosi: "/images/team_toyosi.jpg",
   logo: "/images/logo.png",
   logo_white: "/images/logo_white.png",
 };
@@ -805,12 +811,12 @@ function GetInvolvedPage({ setPage }) {
 function AboutPage() {
   const mob = useMedia("(max-width: 768px)");
   const team = [
-    { name: "Anne Noah", role: "Founder, NeoNoohra\nCofounder, NeoSpeak", c: C.pri },
-    { name: "Ibukun Odutan", role: "Co-founder, NeoSpeak", c: C.acc },
-    { name: "John Abubakar", role: "Key Advisor", c: C.sec },
-    { name: "Praise John-Okwok", role: "Developmental Psychologist", c: C.pri },
-    { name: "Demilade Agboola", role: "Behavioral Therapist / SEN Educator", c: C.acc },
-    { name: "Toyosi Atoyebi", role: "Illustrator", c: C.sec },
+    { name: "Anne Noah", role: "Founder, NeoNoohra\nCofounder, NeoSpeak", c: C.pri, img: IMG.team_anne },
+    { name: "Ibukun Odutan", role: "Co-founder, NeoSpeak", c: C.acc, img: IMG.team_ibukun },
+    { name: "John Abubakar", role: "Key Advisor", c: C.sec, img: IMG.team_john },
+    { name: "Praise John-Okwok", role: "Developmental Psychologist", c: C.pri, img: IMG.team_praise },
+    { name: "Demilade Agboola", role: "Behavioral Therapist / SEN Educator", c: C.acc, img: IMG.team_demilade },
+    { name: "Toyosi Atoyebi", role: "Illustrator", c: C.sec, img: IMG.team_toyosi },
   ];
 
   return (
@@ -845,11 +851,8 @@ function AboutPage() {
           <RGrid cols={3} gap={24}>
             {team.map((t, i) => (
               <Card key={i} style={{ textAlign: "center", padding: 28 }}>
-                <div style={{ width: 100, height: 100, borderRadius: "50%", margin: "0 auto 20px", background: `linear-gradient(135deg, ${t.c}30, ${t.c}60)`, display: "flex", alignItems: "center", justifyContent: "center", border: `3px solid ${t.c}`, position: "relative", overflow: "hidden" }}>
-                  <span style={{ fontSize: 34, fontWeight: 700, color: t.c }}>{t.name.split(" ").map(n => n[0]).join("")}</span>
-                  <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "rgba(0,0,0,0.4)", padding: "3px 0", textAlign: "center" }}>
-                    <span style={{ color: C.w, fontSize: 10, fontWeight: 600 }}>PHOTO</span>
-                  </div>
+                <div style={{ width: mob ? 120 : 140, height: mob ? 120 : 140, borderRadius: "50%", margin: "0 auto 20px", background: `linear-gradient(135deg, ${t.c}30, ${t.c}60)`, display: "flex", alignItems: "center", justifyContent: "center", border: `3px solid ${t.c}`, overflow: "hidden" }}>
+                  {t.img ? <img src={t.img} alt={t.name} style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <span style={{ fontSize: 34, fontWeight: 700, color: t.c }}>{t.name.split(" ").map(n => n[0]).join("")}</span>}
                 </div>
                 <h4 style={{ fontSize: 18, fontWeight: 700, color: C.dk, marginBottom: 6 }}>{t.name}</h4>
                 <p style={{ fontSize: 14, color: C.txL, lineHeight: 1.5, whiteSpace: "pre-line" }}>{t.role}</p>
