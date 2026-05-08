@@ -287,10 +287,10 @@ function HomePage({ setPage }) {
                 <p style={{ fontSize: mob ? 16 : 19, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, marginBottom: 36, maxWidth: 560 }}>{s.s}</p>
               </div>
             ))}
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <Btn onClick={() => go("contact")}>Join the NeoSpeak Waitlist</Btn>
-              <Btn v="outW" onClick={() => go("ecosystem")}>Explore the Ecosystem</Btn>
-              <Btn v="sec" onClick={() => go("donate")}>Support a Child</Btn>
+            <div style={{ display: "flex", gap: mob ? 10 : 12, flexWrap: "wrap", flexDirection: mob ? "column" : "row" }}>
+              <Btn full={mob} onClick={() => go("contact")}>Join the NeoSpeak Waitlist</Btn>
+              <Btn full={mob} v="outW" onClick={() => go("ecosystem")}>Explore the Ecosystem</Btn>
+              <Btn full={mob} v="sec" onClick={() => go("donate")}>Support a Child</Btn>
             </div>
           </div>
           <div style={{ display: "flex", gap: 10, marginTop: 48 }}>
@@ -377,12 +377,12 @@ function HomePage({ setPage }) {
         <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
           <h2 style={{ fontSize: mob ? 28 : 36, fontWeight: 800, color: C.w, marginBottom: 16 }}>Ready to make a difference?</h2>
           <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 17, marginBottom: 36, lineHeight: 1.7 }}>Whether you want to join our community, sponsor a child, or partner with us - every action counts.</p>
-          <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-            <Btn onClick={() => go("contact")}>Join the NeoSpeak Waitlist</Btn>
-            <Btn v="sec" onClick={() => go("donate")}>Sponsor a Child</Btn>
-            <Btn v="outW" onClick={() => go("contact")}>Partner With Us</Btn>
-            <Btn v="outW" onClick={() => go("donate")}>Support Development</Btn>
-            <Btn v="wht" onClick={() => go("contact")}>Join The Neo Corner Community</Btn>
+          <div style={{ display: "flex", gap: mob ? 10 : 14, justifyContent: "center", flexWrap: "wrap", flexDirection: mob ? "column" : "row", alignItems: "center" }}>
+            <Btn full={mob} onClick={() => go("contact")}>Join the NeoSpeak Waitlist</Btn>
+            <Btn full={mob} v="sec" onClick={() => go("donate")}>Sponsor a Child</Btn>
+            <Btn full={mob} v="outW" onClick={() => go("contact")}>Partner With Us</Btn>
+            <Btn full={mob} v="outW" onClick={() => go("donate")}>Support Development</Btn>
+            <Btn full={mob} v="wht" onClick={() => go("contact")}>Join The Neo Corner Community</Btn>
           </div>
         </div>
       </section>
@@ -447,9 +447,9 @@ function ClustersPage({ setPage }) {
   return (
     <div style={{ paddingTop: 72 }}>
       <HeroCarousel slides={clusterSlides} gradientColor={C.dk} accentColor={C.pri}>
-        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <Btn onClick={() => go("donate")}>Sponsor a Cluster</Btn>
-          <Btn v="outW" onClick={() => go("contact")}>Partner with Us</Btn>
+        <div style={{ display: "flex", gap: mob ? 10 : 12, justifyContent: "center", flexWrap: "wrap", flexDirection: mob ? "column" : "row", alignItems: "center" }}>
+          <Btn full={mob} onClick={() => go("donate")}>Sponsor a Cluster</Btn>
+          <Btn full={mob} v="outW" onClick={() => go("contact")}>Partner with Us</Btn>
         </div>
       </HeroCarousel>
 
@@ -562,9 +562,9 @@ function NeoSpeakPage({ setPage }) {
   return (
     <div style={{ paddingTop: 72 }}>
       <HeroCarousel slides={speakSlides} gradientColor={C.dk} accentColor={C.acc}>
-        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <Btn onClick={() => go("contact")}>Join the Waitlist</Btn>
-          <Btn v="outW" onClick={() => go("donate")}>Support Development</Btn>
+        <div style={{ display: "flex", gap: mob ? 10 : 12, justifyContent: "center", flexWrap: "wrap", flexDirection: mob ? "column" : "row", alignItems: "center" }}>
+          <Btn full={mob} onClick={() => go("contact")}>Join the Waitlist</Btn>
+          <Btn full={mob} v="outW" onClick={() => go("donate")}>Support Development</Btn>
         </div>
       </HeroCarousel>
 
@@ -607,10 +607,10 @@ function NeoSpeakPage({ setPage }) {
         <div style={{ maxWidth: 600, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
           <h2 style={{ fontSize: mob ? 26 : 32, fontWeight: 800, color: C.w, marginBottom: 16 }}>Be part of the NeoSpeak journey</h2>
           <p style={{ fontSize: 17, color: "rgba(255,255,255,0.8)", marginBottom: 36, lineHeight: 1.7 }}>Join the waitlist, partner with us, or support development.</p>
-          <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-            <Btn v="wht" onClick={() => go("contact")}>Join Waitlist</Btn>
-            <Btn v="outW" onClick={() => go("contact")}>Partner with Us</Btn>
-            <Btn v="sec" onClick={() => go("donate")}>Support Development</Btn>
+          <div style={{ display: "flex", gap: mob ? 10 : 14, justifyContent: "center", flexWrap: "wrap", flexDirection: mob ? "column" : "row", alignItems: "center" }}>
+            <Btn full={mob} v="wht" onClick={() => go("contact")}>Join Waitlist</Btn>
+            <Btn full={mob} v="outW" onClick={() => go("contact")}>Partner with Us</Btn>
+            <Btn full={mob} v="sec" onClick={() => go("donate")}>Support Development</Btn>
           </div>
         </div>
       </section>
@@ -901,7 +901,7 @@ function ContactPage({ prefill }) {
       </section>
 
       <section style={{ padding: mob ? "20px 20px 60px" : "20px 24px 80px", background: C.bg }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: mob ? "1fr" : "3fr 2fr", gap: mob ? 40 : 64 }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: mob ? "1fr" : "3fr 2fr", gap: mob ? 20 : 64 }}>
           <Card style={{ padding: mob ? 24 : 40 }}>
             {submitted ? (
               <div style={{ textAlign: "center", padding: 48 }}>
